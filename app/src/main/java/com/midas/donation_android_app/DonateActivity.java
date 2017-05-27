@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class DonateActivity extends AppCompatActivity {
     TabHost tabHost;
-    ListView tab1list;
+    ListView tab1list, tab2list, tab3list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,8 @@ public class DonateActivity extends AppCompatActivity {
         tabHost.setCurrentTab(0); //기본 적으로 활성화 시킬 Tab 설정함
         //현재 Tab1 활성화. 1일 경우 Tab2 활성화.
 
+
+        //tab1 ListView
         tab1list = (ListView)findViewById(R.id.tab1);
         ArrayList<Donation> donateArr = new ArrayList<Donation>();
         Donation d1 = new Donation("제목1", "2017.05.27", 1000, 10000);
@@ -48,5 +50,16 @@ public class DonateActivity extends AppCompatActivity {
         DonateAdapter da = new DonateAdapter(this, R.layout.donate_row, donateArr);
         tab1list.setAdapter(da);
 
+        //tab2 ListView
+        tab2list = (ListView)findViewById(R.id.tab2);
+
+        //DonateAdapter da = new DonateAdapter(this, R.layout.donate_row, donateArr);
+        tab1list.setAdapter(da);
+
+        //tab3 ListView
+        tab3list = (ListView)findViewById(R.id.tab3);
+
+        //DonateAdapter da = new DonateAdapter(this, R.layout.donate_row, donateArr);
+        tab3list.setAdapter(da);
     }
 }
