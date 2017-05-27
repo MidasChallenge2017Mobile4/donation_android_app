@@ -1,4 +1,4 @@
-package com.midas.donation_android_app.Info;
+package com.midas.donation_android_app;
 
 /**
  * Created by Soora on 2017-05-27.

@@ -1,4 +1,4 @@
-package com.midas.donation_android_app.Adapter;
+package com.midas.donation_android_app;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,9 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import com.midas.donation_android_app.Info.Donation;
-import com.midas.donation_android_app.R;
 
 import java.util.ArrayList;
 
@@ -50,7 +47,7 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             }
             if (goal != null)
             {
-                goal.setText(d.getGoal()+"원 목표");
+                goal.setText(d.getGoal()+"원");
             }
             if (total != null)
             {
