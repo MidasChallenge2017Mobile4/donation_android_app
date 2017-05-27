@@ -44,22 +44,30 @@ public class PointHistoryAdapter extends ArrayAdapter<PointHistoryInfo> {
             dateTextView.setText(pointHistoryInfo.getDate());
             // 날짜 들어오는 형식에 맞춰서 처리
 
+            TextView titleTextView = (TextView)v.findViewById(R.id.textview_title);
+
             ImageView statusImageView = (ImageView)v.findViewById(R.id.imgview_status);
             switch (pointHistoryInfo.getStatus()){
                 case 1: // 밥
                     statusImageView.setBackgroundResource(R.drawable.rice_bowl);
+                    titleTextView.setText("아침밥");
                     break;
                 case 2: // 운동
                     statusImageView.setBackgroundResource(R.drawable.strong);
+                    titleTextView.setText("헬스");
                     break;
                 case 3: //근태
                     statusImageView.setBackgroundResource(R.drawable.clock);
+                    titleTextView.setText("정시출근");
                     break;
             }
 
             TextView pointTextView = (TextView)v.findViewById(R.id.textview_point);
-            pointTextView.setText(pointHistoryInfo.getPoint() + "pt");
-            // 형식 처리
+            pointTextView.setText(pointHistoryInfo.getPoint()+"");
+
+
+
+
         }
 
         return v;

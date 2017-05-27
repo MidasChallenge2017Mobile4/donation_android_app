@@ -43,7 +43,7 @@ public class DonateHistoryAdapter extends ArrayAdapter<DonateHistoryInfo> {
             titleTextView.setText(donateHistoryInfo.getTitle());
 
             TextView amountTextView = (TextView)v.findViewById(R.id.textview_amount);
-            amountTextView.setText(donateHistoryInfo.getAmount() + "pt");
+            amountTextView.setText(donateHistoryInfo.getAmount()+"");
             // 형식 처리
 
             TextView statusTextView = (TextView)v.findViewById(R.id.textview_status);
