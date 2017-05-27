@@ -10,6 +10,9 @@ import android.os.Bundle;
 
 import com.midas.donation_android_app.R;
 
+/**
+ * Created by chaeeun on 2017-05-27.
+ */
 public class VolunteerActivity extends AppCompatActivity {
 
     Fragment[] arrFragments;
@@ -23,9 +26,9 @@ public class VolunteerActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         arrFragments = new Fragment[3];
-        arrFragments[0] = new BlankFragment();
-        arrFragments[1] = new BlankFragment();
-        arrFragments[2] = new BlankFragment();
+        arrFragments[0] = new VolunteerListFragment();
+        arrFragments[1] = new VolunteerFinishFragment();
+        arrFragments[2] = new myVolunteerFragment();
 
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager(), arrFragments);
 

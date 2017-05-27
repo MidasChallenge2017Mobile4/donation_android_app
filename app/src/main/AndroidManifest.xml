@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".DonateActivity">
         </activity>
         <activity android:name=".volunteer.VolunteerActivity">
         </activity>
+<<<<<<< HEAD
         <activity android:name=".MyPageActivity"></activity>
+        <activity android:name=".DonateExplainActivity"></activity>
+=======
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".volunteer.VolunteerDetailActivity"></activity>
+>>>>>>> 8764abc99400cb2815b7cda5a5efde76ac6b5390
     </application>
 
 </manifest>
