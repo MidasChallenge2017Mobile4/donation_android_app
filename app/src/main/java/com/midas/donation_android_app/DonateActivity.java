@@ -1,6 +1,7 @@
 package com.midas.donation_android_app;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TabHost;
 
 
+import com.midas.donation_android_app.database.DbOpenHelper;
+
 import java.util.ArrayList;
 
 
@@ -20,11 +23,11 @@ public class DonateActivity extends AppCompatActivity {
     TabHost tabHost;
     ListView tab1list, tab2list, tab3list;
     ImageButton back_btn;
+    SQLiteDatabase m_db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
-
         init();
         back_btn = (ImageButton) findViewById(R.id.back_btn);
         back_btn.setOnClickListener(new View.OnClickListener() {

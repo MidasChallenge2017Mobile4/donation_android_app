@@ -37,7 +37,9 @@ public class DbOpenHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DataBases.CreateVtTable._CREATE);
-
+            db.execSQL(DataBases.CreateDoTable._CREATE);//기부 db
+            db.execSQL(DataBases.CreateEpilTable._CREATE);//후기 db, state 1은 기부 state 2는 봉사 후기!
+            db.execSQL(DataBases.CreateMYDoTable._CREATE);//기부 내역 db
         }
 
         // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
@@ -76,6 +78,24 @@ public class DbOpenHelper {
 
     }
 
+    //임의로 intert 할 것들
+    public void DoInsert(){
+
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("title","2014 제 2회 전사 사랑의 연탄나눔");
+        values.put("URL","http://www.midasit.com/upload/BRD_Nanum/%EA%B3%A0%EB%93%B1%EB%8F%99.png");
+        values.put("state",1);
+        mDB.insert("memoinfo",null,values);
+        values.put("title","2013 마이다스 나눔 바자회");
+        values.put("URL","http://www.midasit.com/upload/BRD_Nanum/%EB%82%98%EB%88%94%EB%B0%94%EC%9E%90%ED%9A%8C.png");
+        values.put("state",2);
+        mDB.insert("memoinfo",null,values);
+
+
+
+    }
 
 
     /** DB항목 업그레이드 - radiobuton 수정할 때 사용 */
