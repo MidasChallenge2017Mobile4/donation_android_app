@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TabHost;
 
@@ -17,16 +19,24 @@ import java.util.ArrayList;
 public class DonateActivity extends AppCompatActivity {
     TabHost tabHost;
     ListView tab1list, tab2list, tab3list;
+    ImageButton back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
 
         init();
-
+        back_btn = (ImageButton) findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
     void init(){
+        
         tabHost = (TabHost)findViewById(R.id.donateTab);
         tabHost.setup();
 
@@ -52,8 +62,8 @@ public class DonateActivity extends AppCompatActivity {
         //tab1 ListView
         tab1list = (ListView)findViewById(R.id.tab1);
         ArrayList<Donation> donateArr1 = new ArrayList<Donation>();
-        Donation d1 = new Donation("제목1", "2017.05.27", 1000, 10000, 1);
-        Donation d2 = new Donation("제목2", "2017.05.27", 1000, 10000, 1);
+        Donation d1 = new Donation("제목1", "2017.05.27", 10000, 100, 1);
+        Donation d2 = new Donation("제목2", "2017.05.27", 1000, 100, 1);
         donateArr1.add(d1);
         donateArr1.add(d2);
 
