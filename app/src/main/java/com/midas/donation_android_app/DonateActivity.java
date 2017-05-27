@@ -56,8 +56,8 @@ public class DonateActivity extends AppCompatActivity {
         //tab2 ListView
         tab2list = (ListView)findViewById(R.id.tab2);
         ArrayList<Donation> donateArr2 = new ArrayList<Donation>();
-        Donation d3 = new Donation("제목1", "2017.05.27", 1000, 10000, 2);
-        Donation d4 = new Donation("제목2", "2017.05.27", 1000, 10000, 2);
+        Donation d3 = new Donation("제목1", "2017.05.27", 100000, 1000, 2);
+        Donation d4 = new Donation("제목2", "2017.05.27", 100000, 1000, 2);
         donateArr2.add(d1);
         donateArr2.add(d2);
         DonateAdapter da2 = new DonateAdapter(this, R.layout.donate_row, donateArr2);
@@ -67,8 +67,8 @@ public class DonateActivity extends AppCompatActivity {
         tab3list = (ListView)findViewById(R.id.tab3);
         //DonateAdapter da = new DonateAdapter(this, R.layout.donate_row, donateArr);
         ArrayList<Donation> donateArr3 = new ArrayList<Donation>();
-        Donation d5 = new Donation("제목1", "2017.05.27", 1000, 10000, 3);
-        Donation d6 = new Donation("제목2", "2017.05.27", 1000, 10000, 3);
+        Donation d5 = new Donation("제목1", "2017.05.27", 100000, 1000, 3);
+        Donation d6 = new Donation("제목2", "2017.05.27", 100000, 1000, 3);
         donateArr2.add(d1);
         donateArr2.add(d2);
         DonateAdapter da3 = new DonateAdapter(this, R.layout.donate_row, donateArr3);
