@@ -103,6 +103,14 @@ public class DonateActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        tab2list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), DonateEpilogueActivity.class);
+                intent.putExtra("donateID", 1);
+                startActivity(intent);
+            }
+        });
     }
 
 

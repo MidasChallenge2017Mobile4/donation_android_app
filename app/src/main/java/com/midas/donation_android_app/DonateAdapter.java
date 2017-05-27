@@ -37,6 +37,7 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             TextView date = (TextView) v.findViewById(R.id.date);
             TextView goal = (TextView) v.findViewById(R.id.goal);
             TextView total = (TextView) v.findViewById(R.id.total);
+            TextView state = (TextView) v.findViewById(R.id.state);
             if (title != null)
             {
                 title.setText(d.getTitle());
@@ -52,6 +53,11 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             if (total != null)
             {
                 total.setText((d.getTotal()/d.getGoal())*100+"%");
+            }
+            if(state !=null){
+                if(d.getState()==2) {
+                    state.setText("진행 마감");
+                }
             }
         }
         return v;

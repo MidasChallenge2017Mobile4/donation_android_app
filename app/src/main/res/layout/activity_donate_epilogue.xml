@@ -46,39 +46,9 @@
 
     </RelativeLayout>
 
-    <TabHost
-        android:id="@+id/donateTab"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
-            android:layout_height="55dp" />
-
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:paddingTop="55dp">
-
-            <ListView
-                android:id="@+id/tab1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"></ListView>
-
-            <ListView
-                android:id="@+id/tab2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"></ListView>
-
-            <ListView
-                android:id="@+id/tab3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"></ListView>
-        </FrameLayout>
-    </TabHost>
-
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="48dp"></WebView>
 </LinearLayout>
