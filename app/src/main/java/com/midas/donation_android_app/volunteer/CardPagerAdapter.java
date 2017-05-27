@@ -5,6 +5,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.midas.donation_android_app.R;
@@ -74,10 +75,11 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
     }
 
     private void bind(CardItem item, View view) {
-        TextView titleTextView = (TextView) view.findViewById(R.id.titleTextView);
         TextView contentTextView = (TextView) view.findViewById(R.id.contentTextView);
-        titleTextView.setText(item.getTitle());
+        FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.fl_card);
         contentTextView.setText(item.getText());
+        frameLayout.setBackgroundResource(item.getImage());
+
     }
 
 }
