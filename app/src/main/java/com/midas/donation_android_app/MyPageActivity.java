@@ -1,5 +1,8 @@
 package com.midas.donation_android_app;
 
+import android.app.Application;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -9,8 +12,11 @@ import com.midas.donation_android_app.Adapter.DonateHistoryAdapter;
 import com.midas.donation_android_app.Adapter.PointHistoryAdapter;
 import com.midas.donation_android_app.Info.DonateHistoryInfo;
 import com.midas.donation_android_app.Info.PointHistoryInfo;
+import com.midas.donation_android_app.application.ApplicationController;
+import com.midas.donation_android_app.database.DbOpenHelper;
 import com.midas.donation_android_app.volunteer.VtListData;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MyPageActivity extends AppCompatActivity {
@@ -29,12 +35,20 @@ public class MyPageActivity extends AppCompatActivity {
     private ArrayList<VtListData> vtListDataList = new ArrayList<VtListData>();
 //    private DonateHistoryAdapter donateHistoryAdapter;
 
+    private DbOpenHelper mDbOpenHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
 
         init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mDbOpenHelper.close();
+        super.onDestroy();
     }
 
     private void init(){
@@ -59,18 +73,26 @@ public class MyPageActivity extends AppCompatActivity {
         tabHost.setCurrentTab(0); //기본 적으로 활성화 시킬 Tab 설정함
         //현재 Tab1 활성화. 1일 경우 Tab2 활성화.
 
+        mDbOpenHelper= ApplicationController.getInstance().mDbOpenHelper;
+
+        mDbOpenHelper.getAllPHistory();
+        mDbOpenHelper.getAllDonateHistory();
+
+
         pointHistoryListView = (ListView)findViewById(R.id.tab1_listview);
         pointHistoryAdapter = new PointHistoryAdapter(this,R.layout.list_item_getpoint,pointHistoryInfoList);
         pointHistoryListView.setAdapter(pointHistoryAdapter);
 
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",3,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
 
-        pointHistoryAdapter.notifyDataSetChanged();
+//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
+//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",3,100));
+//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
+//
+//        pointHistoryAdapter.notifyDataSetChanged();
+
 
 
 
@@ -78,14 +100,14 @@ public class MyPageActivity extends AppCompatActivity {
         donateHistoryAdapter = new DonateHistoryAdapter(this,R.layout.list_item_donate_history,donateHistoryInfoList);
         donateHistoryListView.setAdapter(donateHistoryAdapter);
 
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
-
-        donateHistoryAdapter.notifyDataSetChanged();
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+//
+//        donateHistoryAdapter.notifyDataSetChanged();
 
 //      봉사 탭
 //        volunteerListView = (ListView)findViewById(R.id.tab3_listview);
@@ -103,4 +125,5 @@ public class MyPageActivity extends AppCompatActivity {
 //        donateHistoryAdapter.notifyDataSetChanged();
 
     }
+
 }
