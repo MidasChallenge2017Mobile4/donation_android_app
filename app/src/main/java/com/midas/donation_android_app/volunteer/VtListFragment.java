@@ -2,6 +2,7 @@ package com.midas.donation_android_app.volunteer;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,12 +38,12 @@ public class VtListFragment extends Fragment {
 
         matchingListDatas = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            VtListData matchingListData1 = new VtListData();
-            matchingListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
-            matchingListData1.setImage(R.drawable.e1);
-            matchingListData1.setDate("2017.05.27");
-            matchingListDatas.add(matchingListData1);
+        for (int i = 0; i < 20; i++) {
+            VtListData vtListData1 = new VtListData();
+            vtListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
+            vtListData1.setImage(R.drawable.e1);
+            vtListData1.setDate("2017.05.27");
+            matchingListDatas.add(vtListData1);
 
         }
 
@@ -100,9 +101,9 @@ public class VtListFragment extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent intent = new Intent(getActivity(), VolunteerDetailActivity.class);
-//                    startActivity(intent);
-                    Toast.makeText(getContext(), "클릭", Toast.LENGTH_SHORT);
+                    Intent intent = new Intent(getActivity(), VtDetailActivity.class);
+                    startActivity(intent);
+
 
                 }
             });

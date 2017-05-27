@@ -24,5 +24,6 @@ public class DonateExplainActivity extends AppCompatActivity {
     }
     void init(){
         donate_btn = (Button) findViewById(R.id.donate_btn);
+
     }
 }
