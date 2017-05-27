@@ -84,8 +84,8 @@ public class DonateActivity extends AppCompatActivity {
         tab3list = (ListView)findViewById(R.id.tab3);
         //DonateAdapter da = new DonateAdapter(this, R.layout.donate_row, donateArr);
         ArrayList<Donation> donateArr3 = new ArrayList<Donation>();
-        Donation d5 = new Donation("제목1", "2017.05.27", 100000, 1000, 3);
-        Donation d6 = new Donation("제목2", "2017.05.27", 100000, 1000, 3);
+        Donation d5 = new Donation("제목1", "2017.05.27", 100000, 100000, 3);
+        Donation d6 = new Donation("제목2", "2017.05.27", 100000, 100000, 3);
         donateArr3.add(d5);
         donateArr3.add(d6);
         DonateAdapter da3 = new DonateAdapter(this, R.layout.donate_row, donateArr3);
@@ -103,7 +103,7 @@ public class DonateActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        tab2list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        tab3list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(view.getContext(), DonateEpilogueActivity.class);

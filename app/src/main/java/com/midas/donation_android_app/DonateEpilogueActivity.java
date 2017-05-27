@@ -93,7 +93,8 @@ public class DonateEpilogueActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        webpage.getSettings().setBuiltInZoomControls(true);
+        webpage.getSettings().setSupportZoom(true);
         webpage.loadUrl("http://www.midasit.com/upload/BRD_Nanum/%EA%B3%A0%EB%93%B1%EB%8F%99.png");
         // webpage.setOnDragListener();
     }

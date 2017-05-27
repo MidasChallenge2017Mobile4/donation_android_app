@@ -23,6 +23,7 @@
         <activity android:name=".volunteer.VolunteerActivity"></activity>
         <activity android:name=".MyPageActivity" />
         <activity android:name=".DonateExplainActivity" />
+        <activity android:name=".DonateEpilogueActivity" />
         <activity android:name=".volunteer.VtDetailActivity"></activity>
     </application>
 
