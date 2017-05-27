@@ -5,40 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background_c"
     tools:context="com.midas.donation_android_app.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120px"
-        android:background="#0066ff">
+        android:layout_height="48dp"
+        android:background="@color/colorAccent"
+        >
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="봉사앱"
+            android:textSize="15dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="800px"
+        android:layout_height="350dp"
+        android:background="@color/white"
         android:orientation="vertical">
 
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart"
             android:layout_width="match_parent"
-            android:layout_height="700px" />
+            android:layout_marginTop="15dp"
+            android:layout_height="280dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/point"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="my points : 2000pt"/>
+                android:textSize="22dp"
+                android:text=" 2000pt" />
 
             <Button
                 android:id="@+id/btn_mypage"
-                android:layout_width="200px"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorAccent"
+                android:textColor="@color/white"
                 android:text="mypage" />
 
         </LinearLayout>
@@ -49,21 +74,62 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_donation"
+        <LinearLayout
+            android:id="@+id/linear_donation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:text="donation" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/colorAccent"
+           >
 
-        <Button
-            android:id="@+id/btn_volunteer"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/donation"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="donation"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_volunteer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="volunteer" />
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/happiness" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="volunteer"
+                android:textSize="20dp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100px"
+        android:layout_height="70dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -14,20 +14,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:layout_marginLeft="50px"
+            android:layout_marginLeft="30dp"
             android:layout_weight="1"
             android:text="연탄나누기 행사 모금"/>
 
         <TextView
             android:id="@+id/textview_amount"
-            android:layout_width="200px"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="500pt"/>
 
         <TextView
             android:id="@+id/textview_status"
-            android:layout_width="200px"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="진행중"/>

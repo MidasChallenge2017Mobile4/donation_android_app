@@ -12,6 +12,9 @@
     <color name="green_normal">#2fbc9a</color>
     <color name="green_pressed">#2e8771</color>
 
+
+    <color name="background_c">#eeeeee</color>
+
     <color name="facebook_pressed">#263d6e</color>
     <color name="facebook_normal">#3b5998</color>
     <color name="text_color">#c61d1d26</color>

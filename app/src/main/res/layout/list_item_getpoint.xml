@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150px"
+        android:layout_height="100dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -14,21 +14,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:layout_marginLeft="50px"
+            android:layout_marginLeft="50dp"
             android:layout_weight="1"
             android:text="2017.05.02"/>
 
         <ImageView
             android:id="@+id/imgview_status"
-            android:layout_width="80px"
-            android:layout_height="80px"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/rice_bowl"/>
 
         <TextView
             android:id="@+id/textview_point"
-            android:layout_width="200px"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="50px"
+            android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:text="500pt"/>
 
