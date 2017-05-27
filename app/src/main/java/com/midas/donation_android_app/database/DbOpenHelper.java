@@ -87,11 +87,11 @@ public class DbOpenHelper {
         values.put("title","2014 제 2회 전사 사랑의 연탄나눔");
         values.put("URL","http://www.midasit.com/upload/BRD_Nanum/%EA%B3%A0%EB%93%B1%EB%8F%99.png");
         values.put("state",1);
-        mDB.insert("memoinfo",null,values);
+        mDB.insert("Epilinfo",null,values);
         values.put("title","2013 마이다스 나눔 바자회");
         values.put("URL","http://www.midasit.com/upload/BRD_Nanum/%EB%82%98%EB%88%94%EB%B0%94%EC%9E%90%ED%9A%8C.png");
         values.put("state",2);
-        mDB.insert("memoinfo",null,values);
+        mDB.insert("Epilinfo",null,values);
 
 
 
