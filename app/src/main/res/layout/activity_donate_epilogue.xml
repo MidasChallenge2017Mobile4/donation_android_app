@@ -46,42 +46,9 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:background="#FFFFFF"
-        android:orientation="vertical"
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="500dp">
-        <TextView
-            android:background="#e1e1e1"
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:text = "제목"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="5dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="5dp"
-            android:text="내용"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/donate_btn"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@color/green_normal"
-            android:text="기부하기"
-            android:textColor="#ffffff" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:paddingTop="48dp"></WebView>
 </LinearLayout>
