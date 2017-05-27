@@ -17,14 +17,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500px"
+        android:layout_height="800px"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="400px">
 
-        </RelativeLayout>
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart"
+            android:layout_width="match_parent"
+            android:layout_height="700px" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,14 +56,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="donation"/>
+            android:text="donation" />
 
         <Button
             android:id="@+id/btn_volunteer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="volunteer"/>
+            android:text="volunteer" />
     </LinearLayout>
 
 </LinearLayout>
