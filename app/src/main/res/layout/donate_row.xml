@@ -20,33 +20,33 @@
     </LinearLayout>-->
 
     <ImageView
+        android:backgroundTint="#11111100"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="5dp"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="80dp">
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
             android:text="날짜" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_gravity="right"
-            android:layout_height="70dp">
+            android:layout_height="40dp">
         <TextView
             android:id="@+id/goal"
             android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:text = "목표액"/>
         <TextView
             android:id="@+id/total"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:text = "모금액(달성도)"/>
         </LinearLayout>
     </LinearLayout>

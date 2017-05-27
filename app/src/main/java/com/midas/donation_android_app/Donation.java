@@ -6,8 +6,8 @@ package com.midas.donation_android_app;
 
 public class Donation {
     String title, date;
-    double goal, total;
-    Donation(String title, String date, double goal, double total){
+    int goal, total;
+    Donation(String title, String date, int goal, int total){
         this.title = title;
         this.date = date;
         this.goal = goal;
@@ -19,10 +19,10 @@ public class Donation {
     public String getDate(){
         return this.date;
     }
-    public double getGoal(){
+    public int getGoal(){
         return this.goal;
     }
-    public double getTotal(){
+    public int getTotal(){
         return this.total;
     }
 
