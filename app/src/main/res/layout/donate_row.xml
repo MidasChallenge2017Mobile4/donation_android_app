@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="10dp" android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="300dp" android:id="@+id/donate_row">
+
+<!--    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5"
+            android:text="제목" />
+
+
+    </LinearLayout>-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="5dp"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:layout_weight="2"
+            android:text="날짜" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        <TextView
+            android:id="@+id/goal"
+            android:padding="25dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text = "목표액"/>
+        <TextView
+            android:id="@+id/total"
+            android:padding="25dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text = "모금액(달성도)"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
