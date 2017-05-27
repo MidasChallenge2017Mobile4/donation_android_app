@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.TabHost;
 
+import com.midas.donation_android_app.Adapter.DonateAdapter;
+import com.midas.donation_android_app.Info.Donation;
+
 import java.util.ArrayList;
 
 public class DonateActivity extends AppCompatActivity {

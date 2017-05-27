@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_margin="10dp" android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="300dp" android:id="@+id/donate_row">
-    
+
     <ImageView
         android:background="#11111166"
         android:layout_width="match_parent"
