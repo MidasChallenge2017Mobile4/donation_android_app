@@ -52,20 +52,25 @@
         android:layout_width="match_parent"
         android:layout_height="500dp">
         <TextView
-            android:background="#e1e1e1"
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
-            android:text = "제목"/>
+            android:textSize="30dp"
+            android:gravity="center"
+            android:text = "제목입니다"/>
         <ImageView
+            android:id="@+id/iv"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="5dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="300dp"
             android:layout_margin="5dp"
+            />
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
             android:text="내용"
             />
     </LinearLayout>
@@ -75,13 +80,16 @@
         android:layout_height="100dp"
         android:layout_gravity="bottom"
         android:orientation="horizontal">
-
+        <EditText
+            android:id="@+id/donate_money"
+            android:layout_width="300dp"
+            android:layout_height="70dp" />
         <Button
             android:id="@+id/donate_btn"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="@color/green_normal"
-            android:text="기부하기"
+            android:text="기부"
             android:textColor="#ffffff" />
     </LinearLayout>
 </LinearLayout>

@@ -73,7 +73,7 @@ public class DonateActivity extends AppCompatActivity {
         //tab1 ListView
         tab1list = (ListView)findViewById(R.id.tab1);
         ArrayList<Donation> donateArr1 = new ArrayList<Donation>();
-        Donation d1 = new Donation("2017 연탄 나눔 봉사", "2017.05.30", "don_1", 100000, 100, 1);
+        Donation d1 = new Donation("2017 연탄 나눔 봉사", "2017.05.30", "don_1", 100000, 1000, 1);
         donateArr1.add(d1);
         //ArrayList<Donation> dnarr1 =  mDbOpenHelper.DoDo1Select();
         DonateAdapter da1 = new DonateAdapter(this, R.layout.donate_row, donateArr1);
@@ -85,7 +85,7 @@ public class DonateActivity extends AppCompatActivity {
 //        DonateAdapter da2 = new DonateAdapter(this, R.layout.donate_row, dnarr2);
 //        tab2list.setAdapter(da2);*/
         ArrayList<Donation> donateArr2 = new ArrayList<Donation>();
-        Donation d4 = new Donation("2017 아기 용품 전달", "2017.05.23", "don_2", 100000, 5000, 1);
+        Donation d4 = new Donation("2017 아기 용품 전달", "2017.05.23", "don_2", 100000, 5000, 2);
         donateArr2.add(d4);
         DonateAdapter da2 = new DonateAdapter(this, R.layout.donate_row, donateArr2);
         tab2list.setAdapter(da2);
@@ -94,7 +94,7 @@ public class DonateActivity extends AppCompatActivity {
         tab3list = (ListView)findViewById(R.id.tab3);
         ArrayList<Donation> donateArr3 = new ArrayList<>();
         Donation d5 = new Donation("2017 2분기 연탄 나눔 봉사", "2017.05.27", "don_1", 100000, 100000, 3);
-        Donation d6 = new Donation("2017 1분기 연탄 나눔 봉사", "2017.01.31", "don_2", 100000, 100000, 3);
+        Donation d6 = new Donation("2017 1분기 연탄 나눔 봉사", "2017.01.31", "don_3", 100000, 100000, 3);
         donateArr3.add(d5);
         donateArr3.add(d6);
         DonateAdapter da3 = new DonateAdapter(this, R.layout.donate_row, donateArr3);
