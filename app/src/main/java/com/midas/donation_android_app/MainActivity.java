@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setLayout(){
-        makePieChart();
+
 
         mypageBtn = (Button)findViewById(R.id.btn_mypage);
         mypageBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        makePieChart();
     }
 
     private void makePieChart(){
@@ -70,29 +71,32 @@ public class MainActivity extends AppCompatActivity {
 
         List<PieEntry> entries = new ArrayList<>();
 
+//        파이차트에 데이터넣기
+
         entries.add(new PieEntry(18.5f, "Green"));
         entries.add(new PieEntry(26.7f, "Yellow"));
         entries.add(new PieEntry(24.0f, "Red"));
         entries.add(new PieEntry(30.8f, "Blue"));
 
-        PieDataSet set = new PieDataSet(entries, "Election Results");
+        PieDataSet set = new PieDataSet(entries, "");
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
-            colors.add(c);
 
         for (int c : ColorTemplate.JOYFUL_COLORS)
             colors.add(c);
 
-        for (int c : ColorTemplate.COLORFUL_COLORS)
-            colors.add(c);
+        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+        colors.add(c);
 
-        for (int c : ColorTemplate.LIBERTY_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.PASTEL_COLORS)
-            colors.add(c);
+//        for (int c : ColorTemplate.COLORFUL_COLORS)
+//            colors.add(c);
+//
+//        for (int c : ColorTemplate.LIBERTY_COLORS)
+//            colors.add(c);
+//
+//        for (int c : ColorTemplate.PASTEL_COLORS)
+//            colors.add(c);
 
         colors.add(ColorTemplate.getHoloBlue());
         set.setColors(colors);
