@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.midas.donation_android_app.R;
+import com.midas.donation_android_app.application.ApplicationController;
 import com.midas.donation_android_app.database.DbOpenHelper;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  */
 public class VtListFragment extends Fragment {
 
-    private ArrayList<VtListData> matchingListDatas;
+    private ArrayList<VtListData> vtList;
     private VolunteerListAdapter volunteerListAdapter;
     LinearLayoutManager mLayoutManager;
     DbOpenHelper mDbOpenHelper;
@@ -38,16 +39,21 @@ public class VtListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View baseView = inflater.inflate(R.layout.fragment_vt_list, container, false);
 
-        matchingListDatas = new ArrayList<>();
+        vtList = new ArrayList<VtListData>();
+        mDbOpenHelper = ApplicationController.getInstance().mDbOpenHelper;
 
-        for (int i = 0; i < 20; i++) {
-            VtListData vtListData1 = new VtListData();
-            vtListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
-            vtListData1.setImage(R.drawable.e1);
-            vtListData1.setDate("2017.05.27");
-            matchingListDatas.add(vtListData1);
+//        for (int i = 0; i < 20; i++) {
+//            VtListData vtListData1 = new VtListData();
+//            vtListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
+//            vtListData1.setImage(R.drawable.e1);
+//            vtListData1.setDate("2017.05.27");
+//            matchingListDatas.add(vtListData1);
+//
+//        }
 
-        }
+        VtListData vtListData1 = new VtListData();
+        vtList =  mDbOpenHelper.DbMainSelect();
+
 
         RecyclerView rvVoluteerList = (RecyclerView) baseView.findViewById(R.id.rv_list);
 
@@ -77,16 +83,16 @@ public class VtListFragment extends Fragment {
         public void onBindViewHolder(VolunteerListViewHolder holder, int position) {
 
 
-            holder.iv_img.setBackgroundResource(matchingListDatas.get(position).getImage());
-            holder.tv_date.setText(matchingListDatas.get(position).getDate());
-            holder.tv_title.setText(matchingListDatas.get(position).getTitle());
+            holder.iv_img.setBackgroundResource(vtList.get(position).getImage1());
+            holder.tv_date.setText(vtList.get(position).getDate());
+            holder.tv_title.setText(vtList.get(position).getTitle());
 
 
         }
 
         @Override
         public int getItemCount() {
-            return matchingListDatas.size();
+            return vtList.size();
         }
     }
 
