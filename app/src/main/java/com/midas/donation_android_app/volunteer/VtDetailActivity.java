@@ -34,7 +34,6 @@ public class VtDetailActivity extends AppCompatActivity {
             }
         });
 
-        ApplicationController.
 
         mCardAdapter = new CardPagerAdapter();
         mCardAdapter.addCardItem(new CardItem("봉사제목1", "봉사설명1"));
