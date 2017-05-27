@@ -40,8 +40,8 @@ public class DonateActivity extends AppCompatActivity {
 
         tab1list = (ListView)findViewById(R.id.tab1);
         ArrayList<Donation> donateArr = new ArrayList<Donation>();
-        Donation d1 = new Donation("제목1", "날짜1", 1000, 10000);
-        Donation d2 = new Donation("제목2", "날짜2", 1000, 10000);
+        Donation d1 = new Donation("제목1", "2017.05.27", 1000, 10000);
+        Donation d2 = new Donation("제목2", "2017.05.27", 1000, 10000);
         donateArr.add(d1);
         donateArr.add(d2);
 
