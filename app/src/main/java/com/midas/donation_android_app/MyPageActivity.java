@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TabHost;
 
+import com.midas.donation_android_app.Adapter.DonateHistoryAdapter;
 import com.midas.donation_android_app.Adapter.PointHistoryAdapter;
+import com.midas.donation_android_app.Info.DonateHistoryInfo;
 import com.midas.donation_android_app.Info.PointHistoryInfo;
 
 import java.util.ArrayList;
@@ -17,6 +19,10 @@ public class MyPageActivity extends AppCompatActivity {
     private ListView pointHistoryListView;
     private ArrayList<PointHistoryInfo> pointHistoryInfoList = new ArrayList<PointHistoryInfo>();
     private PointHistoryAdapter pointHistoryAdapter;
+
+    private ListView donateHistoryListView;
+    private ArrayList<DonateHistoryInfo> donateHistoryInfoList = new ArrayList<DonateHistoryInfo>();
+    private DonateHistoryAdapter donateHistoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,20 +58,30 @@ public class MyPageActivity extends AppCompatActivity {
         pointHistoryAdapter = new PointHistoryAdapter(this,R.layout.list_item_getpoint,pointHistoryInfoList);
         pointHistoryListView.setAdapter(pointHistoryAdapter);
 
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(1, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(2, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
-        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",3,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
 
         pointHistoryAdapter.notifyDataSetChanged();
+
+
+
+        donateHistoryListView = (ListView)findViewById(R.id.tab2_listview);
+        donateHistoryAdapter = new DonateHistoryAdapter(this,R.layout.list_item_donate_history,donateHistoryInfoList);
+        donateHistoryListView.setAdapter(donateHistoryAdapter);
+
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+
+        donateHistoryAdapter.notifyDataSetChanged();
+
+
     }
 }
