@@ -8,8 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <!-- statusbar 투명하게 만드는 소스-->>
-        <!--<item name="android:statusBarColor">@color/colorPrimaryDark</item>-->
-        <!--<item name="android:windowLightStatusBar">true</item>-->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 </resources>

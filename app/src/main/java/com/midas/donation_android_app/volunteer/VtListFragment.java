@@ -2,6 +2,7 @@ package com.midas.donation_android_app.volunteer;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -100,9 +101,9 @@ public class VtListFragment extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent intent = new Intent(getActivity(), VolunteerDetailActivity.class);
-//                    startActivity(intent);
-                    Toast.makeText(getContext(), "클릭", Toast.LENGTH_SHORT);
+                    Intent intent = new Intent(getActivity(), VtDetailActivity.class);
+                    startActivity(intent);
+
 
                 }
             });
