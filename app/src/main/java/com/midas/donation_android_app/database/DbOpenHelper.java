@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
+import com.midas.donation_android_app.R;
 import com.midas.donation_android_app.volunteer.VtListData;
 
 import java.sql.SQLException;
@@ -37,9 +38,40 @@ public class DbOpenHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DataBases.CreateVtTable._CREATE);
-            db.execSQL(DataBases.CreateDoTable._CREATE);//기부 db
-            db.execSQL(DataBases.CreateEpilTable._CREATE);//후기 db, state 1은 기부 state 2는 봉사 후기!
-            db.execSQL(DataBases.CreateMYDoTable._CREATE);//기부 내역 db
+
+            VtListData vtListData1 = new VtListData(0, "어르신 정서/주거환경 돌보미", "d","\"어르신 정서/주거환경 돌보미", "성남 지역의 노인 요양원을 방문"
+            , "치매노인분들의 말벗 해드리기","함께 산책하기 등의 정서치료와 실내외 청소","안정적이고 쾌적한 주거 환경을 조성"
+            , R.drawable.nursinghome_ex1, R.drawable.nursinghome_ex2, R.drawable.nursinghome_ex3, R.drawable.nursinghome_ex4
+            , R.drawable.nursinghome_ex5, "2017.06.03", "진행중", false
+                    );
+
+            VtListData vtListData2 = new VtListData(1, "마이다스 나눔가게, 사랑의 의류나눔", "d","\"마이다스 나눔가게, 사랑의 의류나눔\"", "마이다스 나눔가게와 사랑의 헌옷나눔 행사가 열립니다"
+                    , "가전제품, 장난감 등을 판매한 수익금으로는","어려운 이웃들의 난방비를 후원하며,","기부해주신 성인 남성용 의복은 노숙인분들이 따뜻한 겨울을 나실 수 있도록 선물합니다"
+                    , R.drawable.clothes_ex1, R.drawable.clothes_ex_2, R.drawable.clothes_ex_3, R.drawable.clothes_ex_4
+                    , R.drawable.clothes_ex1, "2017.06.10", "진행중", false
+            );
+
+            VtListData vtListData3 = new VtListData(2, "사랑의 김장나눔", "d","\"사랑의 김장나눔\"", "독거어르신들이 "
+                    , "건강한 겨울을 나실 수 있도록","김치를 버무리고 포장하여","어르신들께 선물합시다"
+                    , R.drawable.kimchi_explain1, R.drawable.kimchi_explain2, R.drawable.kimchi_exmplain3, R.drawable.kimchi_explain1
+                    , R.drawable.kimchi_explain2, "2017.06.17", "진행중", false
+            );
+
+            VtListData vtListData4 = new VtListData(3, "어르신 정서/주거환경 돌보미", "d","\"어르신 정서/주거환경 돌보미\"", "성남 지역의 노인 요양원을 방문하여"
+                    , "치매노인분들의 말벗 해드리기","함께 산책하기 등의 정서치료와 실내외 청소를 통해","안정적이고 쾌적한 주거 환경을 조성해드립시다"
+                    , R.drawable.nursinghome_ex1, R.drawable.nursinghome_ex2, R.drawable.nursinghome_ex3, R.drawable.nursinghome_ex4
+                    , R.drawable.nursinghome_ex5, "2017.05.13", "완료", false
+            );
+            DbInsert(db, vtListData1);
+            DbInsert(db, vtListData2);
+            DbInsert(db, vtListData3);
+            DbInsert(db, vtListData4);
+
+
+
+
+
+
         }
 
         // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
@@ -62,44 +94,33 @@ public class DbOpenHelper {
     /**
      * DB에 데이터 추가
     */
-    public void DbInsert(VtListData itemData){
+    public void DbInsert(SQLiteDatabase db, VtListData itemData){
 
-        mDB = mDBHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("date",itemData.date);
         values.put("title",itemData.title);
-        values.put("content",itemData.content);
-        values.put("image",itemData.image);
-
+        values.put("url",itemData.title);
+        values.put("content1",itemData.content1);
+        values.put("content2",itemData.content2);
+        values.put("content3",itemData.content3);
+        values.put("content4",itemData.content4);
+        values.put("content5",itemData.content5);
+        values.put("image1",itemData.image1);
+        values.put("image2",itemData.image2);
+        values.put("image3",itemData.image3);
+        values.put("image4",itemData.image4);
+        values.put("image5",itemData.image5);
         values.put("isChecked", String.valueOf(itemData.isChecked));
 
-        mDB.insert("memoinfo",null,values);
-
-    }
-
-    //임의로 intert 할 것들
-    public void DoInsert(){
-
-        mDB = mDBHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put("title","2014 제 2회 전사 사랑의 연탄나눔");
-        values.put("URL","http://www.midasit.com/upload/BRD_Nanum/%EA%B3%A0%EB%93%B1%EB%8F%99.png");
-        values.put("state",1);
-        mDB.insert("Epilinfo",null,values);
-        values.put("title","2013 마이다스 나눔 바자회");
-        values.put("URL","http://www.midasit.com/upload/BRD_Nanum/%EB%82%98%EB%88%94%EB%B0%94%EC%9E%90%ED%9A%8C.png");
-        values.put("state",2);
-        mDB.insert("Epilinfo",null,values);
-
-
+        db.insert("memoinfo",null,values);
 
     }
 
 
-    /** DB항목 업그레이드 - radiobuton 수정할 때 사용 */
-     public boolean DbUpdateRadio(int id,Boolean isChecked){
+
+    /** DB항목 업그레이드 - 참여했는지 참여하기 버튼누르거나 하트누를때 */
+     public boolean DbUpdateChk(int id, Boolean isChecked){
 
      ContentValues values = new ContentValues();
      values.put("isChecked", String.valueOf(isChecked));
@@ -115,21 +136,27 @@ public class DbOpenHelper {
 
 
 
+
+
+
+
+
+
     /**
      * DB항목 업그레이드2 - EditText 에서 수정할 때 사용
      */
-    public void DbUpdate(VtListData itemData){
-
-        mDB = mDBHelper.getWritableDatabase();
-        int id = itemData.getId();
-        ContentValues values = new ContentValues();
-        values.put("title",itemData.getTitle());
-        values.put("content",itemData.getContent());
-        values.put("image",itemData.getImage());
-
-        mDB.update("memoinfo", values, "_id=?", new String[]{String.valueOf(id)});
-
-    }
+//    public void DbUpdate(VtListData itemData){
+//
+//        mDB = mDBHelper.getWritableDatabase();
+//        int id = itemData.getId();
+//        ContentValues values = new ContentValues();
+//        values.put("title",itemData.getTitle());
+//        values.put("content",itemData.getContent());
+//        values.put("image",itemData.getImage());
+//
+//        mDB.update("memoinfo", values, "_id=?", new String[]{String.valueOf(id)});
+//
+//    }
 
 
     public int getCountByDate(String mDate) {
@@ -140,25 +167,25 @@ public class DbOpenHelper {
         return count;
     }
 
-    public VtListData getDayView(String mDate) {
-        SQLiteDatabase mDB;
-        mDB = mDBHelper.getReadableDatabase();
-        String sql = "select title, image from memoinfo where date="+"'"+mDate+"' and isChecked='true'";
-        Cursor cursor = mDB.rawQuery(sql,null);
-        int count = cursor.getCount();
-        if (count == 0) {
-            return null;
-        } else {
-            cursor.moveToNext();
-
-            String title = cursor.getString(cursor.getColumnIndex("title"));
-            int image = cursor.getColumnIndex("image");
-            VtListData itemData = new VtListData();
-            itemData.title = title;
-            itemData.image = image;
-            return itemData;
-        }
-    }
+//    public VtListData getDayView(String mDate) {
+//        SQLiteDatabase mDB;
+//        mDB = mDBHelper.getReadableDatabase();
+//        String sql = "select title, image from memoinfo where date="+"'"+mDate+"' and isChecked='true'";
+//        Cursor cursor = mDB.rawQuery(sql,null);
+//        int count = cursor.getCount();
+//        if (count == 0) {
+//            return null;
+//        } else {
+//            cursor.moveToNext();
+//
+//            String title = cursor.getString(cursor.getColumnIndex("title"));
+//            int image = cursor.getColumnIndex("image");
+//            VtListData itemData = new VtListData();
+//            itemData.title = title;
+//            itemData.image = image;
+//            return itemData;
+//        }
+//    }
 
 
     /**
@@ -188,7 +215,10 @@ public class DbOpenHelper {
         return (int) stmt.simpleQueryForLong();
     }
 
-    /** 전체 목록 recyclerview에 뿌릴 데이터 정렬 */
+
+
+
+    /** 진행중인 봉사목록 */
     public ArrayList<VtListData> DbMainSelect(){
         SQLiteDatabase getDb;
         getDb = mDBHelper.getReadableDatabase();
@@ -200,17 +230,32 @@ public class DbOpenHelper {
 
         while(c.moveToNext()){
             String date = c.getString(c.getColumnIndex("date"));
-            int order = c.getInt(c.getColumnIndex("order"));
             String title = c.getString(c.getColumnIndex("title"));
-            String content = c.getString(c.getColumnIndex("content"));
-            int image = c.getInt(c.getColumnIndex("image"));
+            String content1 = c.getString(c.getColumnIndex("content1"));
+            String content2 = c.getString(c.getColumnIndex("content2"));
+            String content3 = c.getString(c.getColumnIndex("content3"));
+            String content4 = c.getString(c.getColumnIndex("content4"));
+            String content5 = c.getString(c.getColumnIndex("content5"));
+            int image1 = c.getInt(c.getColumnIndex("image1"));
+            int image2 = c.getInt(c.getColumnIndex("image2"));
+            int image3 = c.getInt(c.getColumnIndex("image3"));
+            int image4 = c.getInt(c.getColumnIndex("image4"));
+            int image5 = c.getInt(c.getColumnIndex("image5"));
 
 
             VtListData listViewItem = new VtListData();
 
             listViewItem.title = title;
-            listViewItem.content = content;
-            listViewItem.image = image;
+            listViewItem.content1 = content1;
+            listViewItem.content2 = content2;
+            listViewItem.content3 = content3;
+            listViewItem.content4 = content4;
+            listViewItem.content5 = content5;
+            listViewItem.image1 = image1;
+            listViewItem.image2 = image2;
+            listViewItem.image3 = image3;
+            listViewItem.image4 = image4;
+            listViewItem.image5 = image5;
             listViewItem.date = date;
 
 
@@ -221,6 +266,202 @@ public class DbOpenHelper {
         return itemDatas;
     }
 
+
+    /** 진행중인 봉사목록 */
+    public VtListData DbVtDetailSelect(String title) {
+        SQLiteDatabase getDb;
+        getDb = mDBHelper.getReadableDatabase();
+        Cursor c = getDb.rawQuery("select * from memoinfo where title="+"'"+title+"'",null);
+
+
+//
+//        Log.i("myTag" , "갯수 : " + String.valueOf(c.getCount()));
+
+        while (c.moveToNext()) {
+            String date = c.getString(c.getColumnIndex("date"));
+            String content1 = c.getString(c.getColumnIndex("content1"));
+            String content2 = c.getString(c.getColumnIndex("content2"));
+            String content3 = c.getString(c.getColumnIndex("content3"));
+            String content4 = c.getString(c.getColumnIndex("content4"));
+            String content5 = c.getString(c.getColumnIndex("content5"));
+            int image1 = c.getInt(c.getColumnIndex("image1"));
+            int image2 = c.getInt(c.getColumnIndex("image2"));
+            int image3 = c.getInt(c.getColumnIndex("image3"));
+            int image4 = c.getInt(c.getColumnIndex("image4"));
+            int image5 = c.getInt(c.getColumnIndex("image5"));
+
+
+            VtListData listViewItem = new VtListData();
+
+            listViewItem.title = title;
+            listViewItem.content1 = content1;
+            listViewItem.content2 = content2;
+            listViewItem.content3 = content3;
+            listViewItem.content4 = content4;
+            listViewItem.content5 = content5;
+            listViewItem.image1 = image1;
+            listViewItem.image2 = image2;
+            listViewItem.image3 = image3;
+            listViewItem.image4 = image4;
+            listViewItem.image5 = image5;
+            listViewItem.date = date;
+
+            return listViewItem;
+
+
+        }
+        return null;
+    }
+
+
+
+
+
+
+    /** 종료된 봉사목록 */
+    public ArrayList<VtListData> DbVtFinishSelect(){
+        SQLiteDatabase getDb;
+        getDb = mDBHelper.getReadableDatabase();
+        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+
+        itemDatas = new ArrayList<VtListData>();
+//
+//        Log.i("myTag" , "갯수 : " + String.valueOf(c.getCount()));
+
+        while(c.moveToNext()){
+            String date = c.getString(c.getColumnIndex("date"));
+            String title = c.getString(c.getColumnIndex("title"));
+            String content1 = c.getString(c.getColumnIndex("content1"));
+            String content2 = c.getString(c.getColumnIndex("content2"));
+            String content3 = c.getString(c.getColumnIndex("content3"));
+            String content4 = c.getString(c.getColumnIndex("content4"));
+            String content5 = c.getString(c.getColumnIndex("content5"));
+            int image1 = c.getInt(c.getColumnIndex("image1"));
+            int image2 = c.getInt(c.getColumnIndex("image2"));
+            int image3 = c.getInt(c.getColumnIndex("image3"));
+            int image4 = c.getInt(c.getColumnIndex("image4"));
+            int image5 = c.getInt(c.getColumnIndex("image5"));
+
+
+            VtListData listViewItem = new VtListData();
+
+            listViewItem.title = title;
+            listViewItem.content1 = content1;
+            listViewItem.content2 = content2;
+            listViewItem.content3 = content3;
+            listViewItem.content4 = content4;
+            listViewItem.content5 = content5;
+            listViewItem.image1 = image1;
+            listViewItem.image2 = image2;
+            listViewItem.image3 = image3;
+            listViewItem.image4 = image4;
+            listViewItem.image5 = image5;
+            listViewItem.date = date;
+
+
+            itemDatas.add(listViewItem);
+
+        }
+
+        return itemDatas;
+    }
+
+
+    /** 진행중인 봉사목록 */
+    public ArrayList<VtListData> DbVtListSelect(){
+        SQLiteDatabase getDb;
+        getDb = mDBHelper.getReadableDatabase();
+        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+
+        itemDatas = new ArrayList<VtListData>();
+//
+//        Log.i("myTag" , "갯수 : " + String.valueOf(c.getCount()));
+
+        while(c.moveToNext()){
+            String date = c.getString(c.getColumnIndex("date"));
+            String title = c.getString(c.getColumnIndex("title"));
+            String content1 = c.getString(c.getColumnIndex("content1"));
+            String content2 = c.getString(c.getColumnIndex("content2"));
+            String content3 = c.getString(c.getColumnIndex("content3"));
+            String content4 = c.getString(c.getColumnIndex("content4"));
+            String content5 = c.getString(c.getColumnIndex("content5"));
+            int image1 = c.getInt(c.getColumnIndex("image1"));
+            int image2 = c.getInt(c.getColumnIndex("image2"));
+            int image3 = c.getInt(c.getColumnIndex("image3"));
+            int image4 = c.getInt(c.getColumnIndex("image4"));
+            int image5 = c.getInt(c.getColumnIndex("image5"));
+
+
+            VtListData listViewItem = new VtListData();
+
+            listViewItem.title = title;
+            listViewItem.content1 = content1;
+            listViewItem.content2 = content2;
+            listViewItem.content3 = content3;
+            listViewItem.content4 = content4;
+            listViewItem.content5 = content5;
+            listViewItem.image1 = image1;
+            listViewItem.image2 = image2;
+            listViewItem.image3 = image3;
+            listViewItem.image4 = image4;
+            listViewItem.image5 = image5;
+            listViewItem.date = date;
+
+
+            itemDatas.add(listViewItem);
+
+        }
+
+        return itemDatas;
+    }
+
+    /** 나의 봉사 내역 */
+    public ArrayList<VtListData> DbMyVtSelect(){
+        SQLiteDatabase getDb;
+        getDb = mDBHelper.getReadableDatabase();
+        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+
+        itemDatas = new ArrayList<VtListData>();
+//
+//        Log.i("myTag" , "갯수 : " + String.valueOf(c.getCount()));
+
+        while(c.moveToNext()){
+            String date = c.getString(c.getColumnIndex("date"));
+            String title = c.getString(c.getColumnIndex("title"));
+            String content1 = c.getString(c.getColumnIndex("content1"));
+            String content2 = c.getString(c.getColumnIndex("content2"));
+            String content3 = c.getString(c.getColumnIndex("content3"));
+            String content4 = c.getString(c.getColumnIndex("content4"));
+            String content5 = c.getString(c.getColumnIndex("content5"));
+            int image1 = c.getInt(c.getColumnIndex("image1"));
+            int image2 = c.getInt(c.getColumnIndex("image2"));
+            int image3 = c.getInt(c.getColumnIndex("image3"));
+            int image4 = c.getInt(c.getColumnIndex("image4"));
+            int image5 = c.getInt(c.getColumnIndex("image5"));
+
+
+            VtListData listViewItem = new VtListData();
+
+            listViewItem.title = title;
+            listViewItem.content1 = content1;
+            listViewItem.content2 = content2;
+            listViewItem.content3 = content3;
+            listViewItem.content4 = content4;
+            listViewItem.content5 = content5;
+            listViewItem.image1 = image1;
+            listViewItem.image2 = image2;
+            listViewItem.image3 = image3;
+            listViewItem.image4 = image4;
+            listViewItem.image5 = image5;
+            listViewItem.date = date;
+
+
+            itemDatas.add(listViewItem);
+
+        }
+
+        return itemDatas;
+    }
 
     /**팝업 recyclerview에 뿌릴 데이터*/
     public ArrayList<VtListData> DbPopupActivity(String mDate){
@@ -241,16 +482,32 @@ public class DbOpenHelper {
                 int _id = cursor.getInt(cursor.getColumnIndex("_id"));
                 String date = cursor.getString(cursor.getColumnIndex("date"));
                 String title = cursor.getString(cursor.getColumnIndex("title"));
-                String content = cursor.getString(cursor.getColumnIndex("content"));
-                int image = cursor.getColumnIndex("image");
+                String content1 = cursor.getString(cursor.getColumnIndex("content1"));
+                String content2 = cursor.getString(cursor.getColumnIndex("content2"));
+                String content3 = cursor.getString(cursor.getColumnIndex("content3"));
+                String content4 = cursor.getString(cursor.getColumnIndex("content4"));
+                String content5 = cursor.getString(cursor.getColumnIndex("content5"));
+                int image1 = cursor.getInt(cursor.getColumnIndex("image1"));
+                int image2 = cursor.getInt(cursor.getColumnIndex("image2"));
+                int image3 = cursor.getInt(cursor.getColumnIndex("image3"));
+                int image4 = cursor.getInt(cursor.getColumnIndex("image4"));
+                int image5 = cursor.getInt(cursor.getColumnIndex("image5"));
                 String isChecked = cursor.getString(cursor.getColumnIndex("isChecked"));
 
                 VtListData listViewItem = new VtListData();
 
                 listViewItem.id = _id;
                 listViewItem.title = title;
-                listViewItem.content = content;
-                listViewItem.image = image;
+                listViewItem.content1 = content1;
+                listViewItem.content2 = content2;
+                listViewItem.content3 = content3;
+                listViewItem.content4 = content4;
+                listViewItem.content5 = content5;
+                listViewItem.image1 = image1;
+                listViewItem.image2 = image2;
+                listViewItem.image3 = image3;
+                listViewItem.image4 = image4;
+                listViewItem.image5 = image5;
                 listViewItem.date = date;
                // listViewItem.isChecked = Boolean.getBoolean(isChecked);
                 listViewItem.isChecked = Boolean.valueOf(isChecked).booleanValue();

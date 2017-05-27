@@ -10,11 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.midas.donation_android_app.R;
+import com.midas.donation_android_app.application.ApplicationController;
 import com.midas.donation_android_app.database.DbOpenHelper;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  */
 public class VtListFragment extends Fragment {
 
-    private ArrayList<VtListData> matchingListDatas;
+    private ArrayList<VtListData> vtList;
     private VolunteerListAdapter volunteerListAdapter;
     LinearLayoutManager mLayoutManager;
     DbOpenHelper mDbOpenHelper;
@@ -38,16 +40,11 @@ public class VtListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View baseView = inflater.inflate(R.layout.fragment_vt_list, container, false);
 
-        matchingListDatas = new ArrayList<>();
+        mDbOpenHelper = ApplicationController.getInstance().mDbOpenHelper;
 
-        for (int i = 0; i < 20; i++) {
-            VtListData vtListData1 = new VtListData();
-            vtListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
-            vtListData1.setImage(R.drawable.e1);
-            vtListData1.setDate("2017.05.27");
-            matchingListDatas.add(vtListData1);
 
-        }
+        vtList =  mDbOpenHelper.DbMainSelect();
+
 
         RecyclerView rvVoluteerList = (RecyclerView) baseView.findViewById(R.id.rv_list);
 
@@ -77,16 +74,17 @@ public class VtListFragment extends Fragment {
         public void onBindViewHolder(VolunteerListViewHolder holder, int position) {
 
 
-            holder.iv_img.setBackgroundResource(matchingListDatas.get(position).getImage());
-            holder.tv_date.setText(matchingListDatas.get(position).getDate());
-            holder.tv_title.setText(matchingListDatas.get(position).getTitle());
+            holder.iv_img.setBackgroundResource(vtList.get(position).getImage1());
+            holder.tv_date.setText(vtList.get(position).getDate());
+            holder.tv_title.setText(vtList.get(position).getTitle());
+            holder.chk_like.setChecked(vtList.get(position).isChecked());
 
 
         }
 
         @Override
         public int getItemCount() {
-            return matchingListDatas.size();
+            return vtList.size();
         }
     }
 
@@ -95,18 +93,33 @@ public class VtListFragment extends Fragment {
         public RelativeLayout iv_img;
         public TextView tv_title;
         public TextView tv_date;
+        public CheckBox chk_like;
         public VolunteerListViewHolder(View itemView) {
             super(itemView);
             iv_img = (RelativeLayout) itemView.findViewById(R.id.iv_img);
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             tv_date = (TextView) itemView.findViewById(R.id.tv_date);
+            chk_like = (CheckBox) itemView.findViewById(R.id.chk_like);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int position = getLayoutPosition();
                     Intent intent = new Intent(getActivity(), VtDetailActivity.class);
+                    intent.putExtra("title",vtList.get(position).title);
                     startActivity(intent);
 
 
+
+
+                }
+            });
+
+            chk_like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    int position = getLayoutPosition();
+                    mDbOpenHelper.DbUpdateChk(vtList.get(position).id, isChecked);
                 }
             });
 

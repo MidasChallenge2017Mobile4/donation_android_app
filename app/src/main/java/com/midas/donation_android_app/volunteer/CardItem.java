@@ -6,18 +6,19 @@ package com.midas.donation_android_app.volunteer;
 public class CardItem {
 
     private String mTextResource;
-    private String mTitleResource;
+    private int mImage;
 
-    public CardItem(String title, String text) {
-        mTitleResource = title;
+    public CardItem(String text, int image) {
         mTextResource = text;
+        mImage = image;
     }
 
     public String getText() {
         return mTextResource;
     }
 
-    public String getTitle() {
-        return mTitleResource;
+
+    public int getImage() {
+        return mImage;
     }
 }
