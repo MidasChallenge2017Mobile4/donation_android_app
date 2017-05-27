@@ -38,7 +38,7 @@ public class VtListFragment extends Fragment {
 
         matchingListDatas = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 20; i++) {
             VtListData matchingListData1 = new VtListData();
             matchingListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
             matchingListData1.setImage(R.drawable.e1);
