@@ -23,7 +23,7 @@ public class VolunteerActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         arrFragments = new Fragment[3];
-        arrFragments[0] = new BlankFragment();
+        arrFragments[0] = new VtListFragment();
         arrFragments[1] = new BlankFragment();
         arrFragments[2] = new BlankFragment();
 
