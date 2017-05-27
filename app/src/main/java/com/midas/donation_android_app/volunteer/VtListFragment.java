@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.midas.donation_android_app.R;
+import com.midas.donation_android_app.database.DbOpenHelper;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class VtListFragment extends Fragment {
     private ArrayList<VtListData> matchingListDatas;
     private VolunteerListAdapter volunteerListAdapter;
     LinearLayoutManager mLayoutManager;
+    DbOpenHelper mDbOpenHelper;
 
     public VtListFragment() {
     }
