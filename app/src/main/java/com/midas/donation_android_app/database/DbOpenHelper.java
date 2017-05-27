@@ -119,8 +119,8 @@ public class DbOpenHelper {
 
 
 
-    /** DB항목 업그레이드 - radiobuton 수정할 때 사용 */
-     public boolean DbUpdateRadio(int id,Boolean isChecked){
+    /** DB항목 업그레이드 - 참여하기 버튼누르거나 하트누를때 */
+     public boolean DbUpdateChk(int id, Boolean isChecked){
 
      ContentValues values = new ContentValues();
      values.put("isChecked", String.valueOf(isChecked));
@@ -256,6 +256,55 @@ public class DbOpenHelper {
 
         return itemDatas;
     }
+
+
+    /** 진행중인 봉사목록 */
+    public VtListData DbVtDetailSelect(String title) {
+        SQLiteDatabase getDb;
+        getDb = mDBHelper.getReadableDatabase();
+        Cursor c = getDb.rawQuery("select * from memoinfo where title="+"'"+title+"'",null);
+
+
+//
+//        Log.i("myTag" , "갯수 : " + String.valueOf(c.getCount()));
+
+        while (c.moveToNext()) {
+            String date = c.getString(c.getColumnIndex("date"));
+            String content1 = c.getString(c.getColumnIndex("content1"));
+            String content2 = c.getString(c.getColumnIndex("content2"));
+            String content3 = c.getString(c.getColumnIndex("content3"));
+            String content4 = c.getString(c.getColumnIndex("content4"));
+            String content5 = c.getString(c.getColumnIndex("content5"));
+            int image1 = c.getInt(c.getColumnIndex("image1"));
+            int image2 = c.getInt(c.getColumnIndex("image2"));
+            int image3 = c.getInt(c.getColumnIndex("image3"));
+            int image4 = c.getInt(c.getColumnIndex("image4"));
+            int image5 = c.getInt(c.getColumnIndex("image5"));
+
+
+            VtListData listViewItem = new VtListData();
+
+            listViewItem.title = title;
+            listViewItem.content1 = content1;
+            listViewItem.content2 = content2;
+            listViewItem.content3 = content3;
+            listViewItem.content4 = content4;
+            listViewItem.content5 = content5;
+            listViewItem.image1 = image1;
+            listViewItem.image2 = image2;
+            listViewItem.image3 = image3;
+            listViewItem.image4 = image4;
+            listViewItem.image5 = image5;
+            listViewItem.date = date;
+
+            return listViewItem;
+
+
+        }
+        return null;
+    }
+
+
 
 
 

@@ -26,7 +26,8 @@ public class VtDetailActivity extends AppCompatActivity {
     private CardPagerAdapter mCardAdapter;
     private ShadowTransformer mCardShadowTransformer;
     private DbOpenHelper dbOpenHelper;
-    ArrayList<VtListData> vtList;
+    private String title;
+    private VtListData vtItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,12 @@ public class VtDetailActivity extends AppCompatActivity {
         });
         mCardAdapter = new CardPagerAdapter();
         dbOpenHelper = ApplicationController.getInstance().mDbOpenHelper;
-        vtList = dbOpenHelper.DbMainSelect();
+
+
+        Intent intent = getIntent();
+        title = intent.getExtras().getString("title");
+        vtItem = dbOpenHelper.DbVtDetailSelect(title);
+
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +66,11 @@ public class VtDetailActivity extends AppCompatActivity {
 
 
 
-        mCardAdapter.addCardItem(new CardItem(vtList.get(0).getContent1(), vtList.get(0).image1));
-        mCardAdapter.addCardItem(new CardItem(vtList.get(0).getContent2(), vtList.get(0).image2));
-        mCardAdapter.addCardItem(new CardItem(vtList.get(0).getContent3(), vtList.get(0).image3));
-        mCardAdapter.addCardItem(new CardItem(vtList.get(0).getContent4(), vtList.get(0).image4));
-        mCardAdapter.addCardItem(new CardItem(vtList.get(0).getContent5(), vtList.get(0).image5));
+        mCardAdapter.addCardItem(new CardItem(vtItem.getContent1(), vtItem.image1));
+        mCardAdapter.addCardItem(new CardItem(vtItem.getContent2(), vtItem.image2));
+        mCardAdapter.addCardItem(new CardItem(vtItem.getContent3(), vtItem.image3));
+        mCardAdapter.addCardItem(new CardItem(vtItem.getContent4(), vtItem.image4));
+        mCardAdapter.addCardItem(new CardItem(vtItem.getContent5(), vtItem.image5));
 
 
         mCardShadowTransformer = new ShadowTransformer(mViewPager, mCardAdapter);
