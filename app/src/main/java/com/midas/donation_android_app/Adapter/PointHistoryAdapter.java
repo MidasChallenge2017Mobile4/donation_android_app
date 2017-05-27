@@ -1,4 +1,4 @@
-package com.midas.donation_android_app;
+package com.midas.donation_android_app.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.midas.donation_android_app.Info.PointHistoryInfo;
+import com.midas.donation_android_app.R;
 
 import java.util.ArrayList;
 

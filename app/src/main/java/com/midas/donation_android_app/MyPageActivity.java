@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TabHost;
 
+import com.midas.donation_android_app.Adapter.PointHistoryAdapter;
+import com.midas.donation_android_app.Info.PointHistoryInfo;
+
 import java.util.ArrayList;
 
 public class MyPageActivity extends AppCompatActivity {
@@ -44,5 +47,25 @@ public class MyPageActivity extends AppCompatActivity {
 
         tabHost.setCurrentTab(0); //기본 적으로 활성화 시킬 Tab 설정함
         //현재 Tab1 활성화. 1일 경우 Tab2 활성화.
+
+        pointHistoryListView = (ListView)findViewById(R.id.tab1_listview);
+        pointHistoryAdapter = new PointHistoryAdapter(this,R.layout.list_item_getpoint,pointHistoryInfoList);
+        pointHistoryListView.setAdapter(pointHistoryAdapter);
+
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(1, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(2, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+        pointHistoryInfoList.add(3, new PointHistoryInfo("2017.04.05",100));
+
+        pointHistoryAdapter.notifyDataSetChanged();
     }
 }
