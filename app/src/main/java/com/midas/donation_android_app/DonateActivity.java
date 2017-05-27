@@ -58,8 +58,8 @@ public class DonateActivity extends AppCompatActivity {
         ArrayList<Donation> donateArr2 = new ArrayList<Donation>();
         Donation d3 = new Donation("제목1", "2017.05.27", 100000, 1000, 2);
         Donation d4 = new Donation("제목2", "2017.05.27", 100000, 1000, 2);
-        donateArr2.add(d1);
-        donateArr2.add(d2);
+        donateArr2.add(d3);
+        donateArr2.add(d4);
         DonateAdapter da2 = new DonateAdapter(this, R.layout.donate_row, donateArr2);
         tab2list.setAdapter(da2);
 
@@ -69,8 +69,8 @@ public class DonateActivity extends AppCompatActivity {
         ArrayList<Donation> donateArr3 = new ArrayList<Donation>();
         Donation d5 = new Donation("제목1", "2017.05.27", 100000, 1000, 3);
         Donation d6 = new Donation("제목2", "2017.05.27", 100000, 1000, 3);
-        donateArr2.add(d1);
-        donateArr2.add(d2);
+        donateArr3.add(d5);
+        donateArr3.add(d6);
         DonateAdapter da3 = new DonateAdapter(this, R.layout.donate_row, donateArr3);
         tab3list.setAdapter(da3);
 
@@ -81,7 +81,9 @@ public class DonateActivity extends AppCompatActivity {
         tab1list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(view.getContext(), DonateExplainActivity.class);
+                intent.putExtra("donateID", 1);
+                startActivity(intent);
             }
         });
     }
