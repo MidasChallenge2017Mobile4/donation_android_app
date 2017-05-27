@@ -1,4 +1,4 @@
-package com.midas.donation_android_app;
+package com.midas.donation_android_app.Info;
 
 /**
  * Created by YURIM on 2017-05-27.
