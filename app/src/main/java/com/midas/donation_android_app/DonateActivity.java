@@ -10,7 +10,11 @@ import android.widget.ListView;
 import android.widget.TabHost;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -26,6 +30,14 @@ public class DonateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
+
+        SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
+        Date currentTime = new Date ();
+        String mTime = mSimpleDateFormat.format ( currentTime );
+
+        Donate1 tab1db = new Donate1();
+        tab1db.execute(mTime);
+
         init();
     }
     void init(){
@@ -96,26 +108,13 @@ public class DonateActivity extends AppCompatActivity {
             }
         });
     }
-    //value object 작성 - value object가 뭔지 모르겠음 ㅠㅠ
-    public class test {
-        private String ret;
 
-        public String getRet() {
-            return ret;
-        }
-
-        public void setRet(String ret) {
-            this.ret = ret;
-        }
-    }
-
-
-    public class Danate1 extends AsyncTask<String, Void, String> {
+    public class Donate1 extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             String result = null;
-            DonateService service = new repo().getDonateService();
-            Call<test> c = service.DonateInfo(params[0]);
+            DonateService service = getDonateService();
+            Call<List<Donation>> c = service.DonateInfo(params[0]);
             try {
                 c.execute();
             } catch (IOException e) {
@@ -123,31 +122,23 @@ public class DonateActivity extends AppCompatActivity {
             }
             return null;
         }
-    }
-
-
-
-
-
-    //siteID 목록 만들기 service
-    public interface DonateService {
-        @FormUrlEncoded
-        @POST("donate1.php") // '/'를 붙이지 않음
-        //siteurl으로 찾는 예시
-        public Call<test> DonateInfo(@Field("username") String username);
-    }
-    //서비스 생성 및 반환
-    public class repo {
         public DonateService getDonateService(){
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("192.168.0.48/") // '/'를 꼭 붙여주어야함!
+                    .baseUrl("http://192.168.0.48/") // '/'를 꼭 붙여주어야함!
                     //json과 xml을 사용하기 위함
                     .addConverterFactory(GsonConverterFactory.create())
-                //    .addConverterFactory(SimpleXmlConverterFactory.create()) //xml 사용하기 위해서
+                    //    .addConverterFactory(SimpleXmlConverterFactory.create()) //xml 사용하기 위해서
                     .build();
             DonateService service =  retrofit.create(DonateService.class);
             return service;
         }
+    }
+
+    public interface DonateService {
+        @FormUrlEncoded
+        @POST("donate1.php") // '/'를 붙이지 않음
+        //siteurl으로 찾는 예시
+        public Call<List<Donation>> DonateInfo(@Field("date") String date);
     }
 
 }
