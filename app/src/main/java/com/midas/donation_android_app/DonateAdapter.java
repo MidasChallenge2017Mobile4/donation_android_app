@@ -57,6 +57,7 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
                     date.setText(d.getDate());
                 }else{
                     date.setText(d.getTitle());
+                    date.setWidth(600);
                 }
             }
             if (goal != null)
@@ -74,9 +75,9 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             }
             if(iv !=null){
                 if(d.image.equals("don_1")) {
-                    iv.setImageResource(R.mipmap.don_1);
+                    iv.setImageResource(R.drawable.dnt_1);
                 }else{
-                    iv.setImageResource(R.mipmap.don_2);
+                    iv.setImageResource(R.drawable.dnt_2);
                 }
             }
         }/*else if(d != null &&d.getState()==3){
