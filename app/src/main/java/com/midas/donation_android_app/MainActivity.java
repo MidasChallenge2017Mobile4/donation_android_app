@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setLayout(){
-        makePieChart();
+
 
         mypageBtn = (Button)findViewById(R.id.btn_mypage);
         mypageBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
-    private void makePieChart(){
+
+        // pieChart에 데이터 넣기
+
         pieChart = (PieChart)findViewById(R.id.piechart);
 
         List<PieEntry> entries = new ArrayList<>();
