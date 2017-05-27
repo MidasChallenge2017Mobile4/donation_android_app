@@ -4,36 +4,38 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     app:cardUseCompatPadding="true">
 
     <FrameLayout
+        android:id="@+id/fl_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="330dp"
-            android:gravity="center"
             android:orientation="vertical"
+            android:background="#33000000"
             android:padding="24dp">
 
-            <TextView
-                android:id="@+id/titleTextView"
-                style="@style/TextAppearance.AppCompat.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/contentTextView"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"/>
+                android:gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:text="마이다스 나눔가게, 사랑의 의류나눔"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
 
-        </LinearLayout>
+
+
+        </RelativeLayout>
 
 
 

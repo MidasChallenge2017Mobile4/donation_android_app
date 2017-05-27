@@ -2,34 +2,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white">
+
+        <ImageButton
+            android:visibility="visible"
+            android:layout_centerVertical="true"
+            android:id="@+id/back_btn"
+            android:background="@android:color/transparent"
+            android:src="@drawable/back_btn"
+            android:layout_marginLeft="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            />
+
+        <TextView
+            android:text="기부"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:id="@+id/this_month_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color" />
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/today_tv"-->
+        <!--android:gravity="right"-->
+        <!--android:text="오늘"-->
+        <!--android:paddingRight="16dp"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:textSize="18dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="24dp"-->
+        <!--android:layout_alignBaseline="@+id/this_month_tv"-->
+        <!--android:layout_alignBottom="@+id/this_month_tv"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true" />-->
+
+    </RelativeLayout>
+
     <TabHost
         android:id="@+id/donateTab"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:background="@color/white">
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="fill_parent"
-            android:layout_height="70dp" />
+            android:layout_height="55dp" />
 
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:paddingTop="70dp">
+            android:paddingTop="55dp">
 
             <ListView
+                android:background="#CFCFCF"
                 android:id="@+id/tab1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"></ListView>
 
             <ListView
+                android:background="#CFCFCF"
                 android:id="@+id/tab2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"></ListView>
 
             <ListView
+                android:background="#CFCFCF"
                 android:id="@+id/tab3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

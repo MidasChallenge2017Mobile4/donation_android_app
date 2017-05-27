@@ -30,13 +30,13 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/this_month_tv"
+                android:id="@+id/main_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="진행 중인 봉사"
                 android:textColor="@color/text_color"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
 
             <ImageButton
@@ -73,6 +73,7 @@
 
 
     <Button
+        android:id="@+id/btn_apply"
         android:text="참여하기"
         android:gravity="center"
         android:textSize="16sp"

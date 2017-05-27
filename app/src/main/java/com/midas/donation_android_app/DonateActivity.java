@@ -1,13 +1,21 @@
 package com.midas.donation_android_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
+
+import com.midas.donation_android_app.application.ApplicationController;
+import com.midas.donation_android_app.database.DbOpenHelper;
 
 import java.util.ArrayList;
 
@@ -17,16 +25,29 @@ import java.util.ArrayList;
 public class DonateActivity extends AppCompatActivity {
     TabHost tabHost;
     ListView tab1list, tab2list, tab3list;
+    ImageButton back_btn;
+    SQLiteDatabase m_db;
+    DbOpenHelper mDbOpenHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
-
+        mDbOpenHelper = ApplicationController.getInstance().mDbOpenHelper;
+        //mDbOpenHelper.DoEpilInsert();
+        //mDbOpenHelper.DoDoInsert();
         init();
-
+        back_btn = (ImageButton) findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
     void init(){
+
         tabHost = (TabHost)findViewById(R.id.donateTab);
         tabHost.setup();
 
@@ -52,19 +73,22 @@ public class DonateActivity extends AppCompatActivity {
         //tab1 ListView
         tab1list = (ListView)findViewById(R.id.tab1);
         ArrayList<Donation> donateArr1 = new ArrayList<Donation>();
-        Donation d1 = new Donation("제목1", "2017.05.27", 1000, 10000, 1);
-        Donation d2 = new Donation("제목2", "2017.05.27", 1000, 10000, 1);
+        Donation d1 = new Donation("2017 연탄 나눔 봉사", "2017.05.30", "don_1", 100000, 100, 1);
+        Donation d2 = new Donation("2017 아기 용품 전달", "2017.05.29", "don_2", 100000, 100, 1);
         donateArr1.add(d1);
         donateArr1.add(d2);
-
+        //ArrayList<Donation> dnarr1 =  mDbOpenHelper.DoDo1Select();
         DonateAdapter da1 = new DonateAdapter(this, R.layout.donate_row, donateArr1);
         tab1list.setAdapter(da1);
 
         //tab2 ListView
         tab2list = (ListView)findViewById(R.id.tab2);
+///*        ArrayList<Donation> dnarr2 =  mDbOpenHelper.DoDo2Select();
+//        DonateAdapter da2 = new DonateAdapter(this, R.layout.donate_row, dnarr2);
+//        tab2list.setAdapter(da2);*/
         ArrayList<Donation> donateArr2 = new ArrayList<Donation>();
-        Donation d3 = new Donation("제목1", "2017.05.27", 100000, 1000, 2);
-        Donation d4 = new Donation("제목2", "2017.05.27", 100000, 1000, 2);
+        Donation d3 = new Donation("2017 연탄 나눔 봉사", "2017.05.25", "don_1", 100000, 1000, 1);
+        Donation d4 = new Donation("2017 아기 용품 전달", "2017.05.23", "don_2", 100000, 1000, 1);
         donateArr2.add(d3);
         donateArr2.add(d4);
         DonateAdapter da2 = new DonateAdapter(this, R.layout.donate_row, donateArr2);
@@ -72,10 +96,9 @@ public class DonateActivity extends AppCompatActivity {
 
         //tab3 ListView
         tab3list = (ListView)findViewById(R.id.tab3);
-        //DonateAdapter da = new DonateAdapter(this, R.layout.donate_row, donateArr);
-        ArrayList<Donation> donateArr3 = new ArrayList<Donation>();
-        Donation d5 = new Donation("제목1", "2017.05.27", 100000, 1000, 3);
-        Donation d6 = new Donation("제목2", "2017.05.27", 100000, 1000, 3);
+        ArrayList<Donation> donateArr3 = new ArrayList<>();
+        Donation d5 = new Donation("2017 연탄 나눔 봉사", "2017.05.27", "don_1", 100000, 10000, 1);
+        Donation d6 = new Donation("2017 아기 용품 전달", "2017.05.27", "don_2", 100000, 10000, 1);
         donateArr3.add(d5);
         donateArr3.add(d6);
         DonateAdapter da3 = new DonateAdapter(this, R.layout.donate_row, donateArr3);
@@ -90,6 +113,14 @@ public class DonateActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(view.getContext(), DonateExplainActivity.class);
                 intent.putExtra("donateID", 1);
+                startActivity(intent);
+            }
+        });
+        tab3list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), DonateEpilogueActivity.class);
+                intent.putExtra("URL", "http://www.midasit.com/upload/BRD_Nanum/%EA%B3%A0%EB%93%B1%EB%8F%99.png");
                 startActivity(intent);
             }
         });

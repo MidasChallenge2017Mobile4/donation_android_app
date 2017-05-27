@@ -1,12 +1,20 @@
 package com.midas.donation_android_app;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -37,13 +45,19 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             TextView date = (TextView) v.findViewById(R.id.date);
             TextView goal = (TextView) v.findViewById(R.id.goal);
             TextView total = (TextView) v.findViewById(R.id.total);
+            TextView state = (TextView) v.findViewById(R.id.state);
+            ImageView iv = (ImageView) v.findViewById(R.id.row_iv);
             if (title != null)
             {
                 title.setText(d.getTitle());
             }
             if (date != null)
             {
-                date.setText(d.getDate());
+                if(d.getState()!=3) {
+                    date.setText(d.getDate());
+                }else{
+                    date.setText(d.getTitle());
+                }
             }
             if (goal != null)
             {
@@ -53,7 +67,35 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             {
                 total.setText((d.getTotal()/d.getGoal())*100+"%");
             }
-        }
+            if(state !=null){
+                if(d.getState()==2) {
+                    state.setText("모금실패");
+                }
+            }
+            if(iv !=null){
+                if(d.image.equals("don_1")) {
+                    iv.setImageResource(R.mipmap.don_1);
+                }else{
+                    iv.setImageResource(R.mipmap.don_2);
+                }
+            }
+        }/*else if(d != null &&d.getState()==3){
+            ImageView iv = (ImageView) v.findViewById(R.id.row_iv);
+            URL url = null;
+            Bitmap bitmap;
+            try {
+                url = new URL(d.getContent());
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                conn.setDoInput(true);
+                conn.connect();
+                InputStream is = conn.getInputStream();
+                bitmap = BitmapFactory.decodeStream(is);
+                iv.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }*/
         return v;
     }
 }

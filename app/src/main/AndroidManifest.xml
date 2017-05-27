@@ -25,6 +25,8 @@
         <activity android:name=".DonateExplainActivity" />
         <activity android:name=".volunteer.VtDetailActivity" />
         <activity android:name=".GraphActivity"></activity>
+        <activity android:name=".DonateEpilogueActivity" />
+
     </application>
 
 </manifest>

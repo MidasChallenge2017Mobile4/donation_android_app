@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.midas.donation_android_app.DonateAdapter;
 import com.midas.donation_android_app.Donation;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 public class DonateExplainActivity extends AppCompatActivity {
     Button donate_btn;
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,15 @@ public class DonateExplainActivity extends AppCompatActivity {
         init();
     }
     void init(){
+        tv = (TextView) findViewById(R.id.donate_money);
         donate_btn = (Button) findViewById(R.id.donate_btn);
-
+        donate_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = tv.getText().toString();
+                int money = Integer.parseInt(text);
+                tv.setText(" ");
+            }
+        });
     }
 }
