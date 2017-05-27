@@ -36,7 +36,7 @@ public class DonateActivity extends AppCompatActivity {
 
     }
     void init(){
-        
+
         tabHost = (TabHost)findViewById(R.id.donateTab);
         tabHost.setup();
 
