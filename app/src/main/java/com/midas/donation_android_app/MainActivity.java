@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -20,12 +21,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Button mypageBtn;
-    private Button donationBtn;
-    private Button volunteerBtn;
+    private LinearLayout donationLayout;
+    private LinearLayout volunteerLayout;
 
     private PieChart pieChart;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -45,18 +47,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        donationBtn = (Button)findViewById(R.id.btn_donation);
-        donationBtn.setOnClickListener(new View.OnClickListener() {
+        donationLayout = (LinearLayout) findViewById(R.id.linear_donation);
+        donationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DonateActivity.class);
-                Log.d("TESTTEST","BUTTON CLICK");
                 startActivity(intent);
             }
         });
 
-        volunteerBtn = (Button)findViewById(R.id.btn_volunteer);
-        volunteerBtn.setOnClickListener(new View.OnClickListener() {
+        volunteerLayout = (LinearLayout)findViewById(R.id.linear_volunteer);
+        volunteerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, VolunteerActivity.class);
@@ -73,10 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
 //        파이차트에 데이터넣기
 
-        entries.add(new PieEntry(18.5f, "Green"));
-        entries.add(new PieEntry(26.7f, "Yellow"));
-        entries.add(new PieEntry(24.0f, "Red"));
-        entries.add(new PieEntry(30.8f, "Blue"));
+        entries.add(new PieEntry(45f, "아침"));
+        entries.add(new PieEntry(30f, "운동"));
+        entries.add(new PieEntry(25f, "정시출근"));
 
         PieDataSet set = new PieDataSet(entries, "");
 

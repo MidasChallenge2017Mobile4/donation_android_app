@@ -9,6 +9,7 @@ import com.midas.donation_android_app.Adapter.DonateHistoryAdapter;
 import com.midas.donation_android_app.Adapter.PointHistoryAdapter;
 import com.midas.donation_android_app.Info.DonateHistoryInfo;
 import com.midas.donation_android_app.Info.PointHistoryInfo;
+import com.midas.donation_android_app.volunteer.VtListData;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,10 @@ public class MyPageActivity extends AppCompatActivity {
     private ListView donateHistoryListView;
     private ArrayList<DonateHistoryInfo> donateHistoryInfoList = new ArrayList<DonateHistoryInfo>();
     private DonateHistoryAdapter donateHistoryAdapter;
+
+    private ListView volunteerListView;
+    private ArrayList<VtListData> vtListDataList = new ArrayList<VtListData>();
+//    private DonateHistoryAdapter donateHistoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,20 @@ public class MyPageActivity extends AppCompatActivity {
 
         donateHistoryAdapter.notifyDataSetChanged();
 
+//      봉사 탭
+//        volunteerListView = (ListView)findViewById(R.id.tab3_listview);
+//        donateHistoryAdapter = new DonateHistoryAdapter(this,R.layout.list_item_donate_history,vtListDataList);
+//        volunteerListView.setAdapter(donateHistoryAdapter);
+//
+//
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+//
+//        donateHistoryAdapter.notifyDataSetChanged();
 
     }
 }
