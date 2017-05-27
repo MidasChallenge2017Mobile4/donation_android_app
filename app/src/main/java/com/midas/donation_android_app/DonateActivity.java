@@ -2,10 +2,14 @@ package com.midas.donation_android_app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ListView;
 import android.widget.TabHost;
+
+import java.util.ArrayList;
 
 public class DonateActivity extends AppCompatActivity {
     TabHost tabHost;
+    ListView tab1list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,16 @@ public class DonateActivity extends AppCompatActivity {
 
         tabHost.setCurrentTab(0); //기본 적으로 활성화 시킬 Tab 설정함
         //현재 Tab1 활성화. 1일 경우 Tab2 활성화.
-    }
 
+        tab1list = (ListView)findViewById(R.id.tab1);
+        ArrayList<Donation> donateArr = new ArrayList<Donation>();
+        Donation d1 = new Donation("제목1", "날짜1", 1000, 10000);
+        Donation d2 = new Donation("제목2", "날짜2", 1000, 10000);
+        donateArr.add(d1);
+        donateArr.add(d2);
+
+        DonateAdapter da = new DonateAdapter(this, R.layout.donate_row, donateArr);
+        tab1list.setAdapter(da);
+
+    }
 }
