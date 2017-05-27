@@ -1,6 +1,7 @@
 package com.midas.donation_android_app;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import com.midas.donation_android_app.DonateAdapter;
 import com.midas.donation_android_app.Donation;
 import com.midas.donation_android_app.R;
+import com.midas.donation_android_app.application.ApplicationController;
+import com.midas.donation_android_app.database.DbOpenHelper;
 
 import java.util.ArrayList;
 
@@ -23,6 +26,8 @@ public class DonateExplainActivity extends AppCompatActivity {
     Button donate_btn;
     TextView tv, title, content;
     ImageView iv;
+    DbOpenHelper mDbOpenHelper;
+    SQLite
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,8 @@ public class DonateExplainActivity extends AppCompatActivity {
                     tv.setText(" ");
                 }else{
                     Toast.makeText(getApplicationContext(),"멋진 기부를 하셨네요!", Toast.LENGTH_SHORT).show();
+                    SQLiteDatabase mDB;
+                    mDbOpenHelper.MyDoInsert(mDB, 1, 2, 2000);
                     tv.setText(" ");
                 }
             }

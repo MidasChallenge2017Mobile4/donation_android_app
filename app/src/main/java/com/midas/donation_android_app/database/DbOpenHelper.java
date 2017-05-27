@@ -67,13 +67,22 @@ public class DbOpenHelper {
             DbInsert(db, vtListData3);
             DbInsert(db, vtListData4);
 
-
-
-
+            db.execSQL(DataBases.CreateMYDoTable._CREATE);
+            MyDoInsert(db, 1, 1, 1000);
+            MyDoInsert(db, 1, 2, 2000);
 
 
         }
+        public void MyDoInsert(SQLiteDatabase db, int did, int uid, int money){
 
+
+            ContentValues values = new ContentValues();
+            values.put("Do_id",did);
+            values.put("User_id",uid);
+            values.put("money",money);
+            db.insert("MyDoinfo",null,values);
+
+        }
         // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
