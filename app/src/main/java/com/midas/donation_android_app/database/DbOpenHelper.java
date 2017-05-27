@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
+import com.midas.donation_android_app.Donation;
+import com.midas.donation_android_app.Info.DonateHistoryInfo;
+import com.midas.donation_android_app.Info.PointHistoryInfo;
 import com.midas.donation_android_app.volunteer.VtListData;
 
 import java.sql.SQLException;
@@ -26,7 +29,7 @@ public class DbOpenHelper {
 
     private ArrayList<VtListData> itemDatas = null;
 
-    private class DatabaseHelper extends SQLiteOpenHelper {
+    public static class DatabaseHelper extends SQLiteOpenHelper {
 
         // 생성자
         public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -37,6 +40,10 @@ public class DbOpenHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DataBases.CreateVtTable._CREATE);
+            db.execSQL(DataBases.CreateDoTable._CREATE);
+            db.execSQL(DataBases.CreatePHistoryTable._CREATE);
+            db.execSQL(DataBases.CreateUserTable._CREATE);
+            db.execSQL(DataBases.CreateDonateHistoryTable._CREATE);
 
         }
 
@@ -243,6 +250,55 @@ public class DbOpenHelper {
         return itemDatas;
     }
 
+// 포인트 획득 내역 읽기
+    public PointHistoryInfo getAllPHistory() {
+        Log.d("TESTTEST","HIHIHI");
+        // 읽기가 가능하게 DB 열기
+        SQLiteDatabase getDb = mDBHelper.getReadableDatabase();
+        String result = "";
+
+        // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
+        Cursor cursor = getDb.rawQuery("SELECT * FROM PHistoryinfo WHERE User_id = " + 1, null);
+        int count = cursor.getCount();
+        if (count == 0) {
+            return null;
+        } else {
+            cursor.moveToNext();
+
+            String date = cursor.getString(cursor.getColumnIndex("date"));
+            int status = cursor.getColumnIndex("status");
+            int point = cursor.getColumnIndex("point");
+            PointHistoryInfo itemData = new PointHistoryInfo(date, status, point);
+
+            return itemData;
+        }
+    }
+
+        //    기부 내역 읽기
+    public DonateHistoryInfo getAllDonateHistory() {
+        // 읽기가 가능하게 DB 열기
+        SQLiteDatabase getDb = mDBHelper.getReadableDatabase();
+        String result = "";
+
+        // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
+        String qry = "SELECT DonateHistoryinfo.amount, doinfo.title, doinfo.status FROM DonateHistoryinfo INNER JOIN doinfo ON DonateHistoryinfo.Do_id=doinfo._id";
+        Cursor cursor = getDb.rawQuery(qry, null);
+        int count = cursor.getCount();
+        if (count == 0) {
+            return null;
+        } else {
+            cursor.moveToNext();
+
+            int amount = cursor.getColumnIndex("amount");
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            int status = cursor.getColumnIndex("status");
+
+            DonateHistoryInfo itemData = new DonateHistoryInfo(title,amount,status);
+
+            return itemData;
+        }
+
+    }
 
 
 

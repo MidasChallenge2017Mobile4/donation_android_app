@@ -75,8 +75,8 @@ public class MyPageActivity extends AppCompatActivity {
 
         mDbOpenHelper= ApplicationController.getInstance().mDbOpenHelper;
 
-        mDbOpenHelper.getAllPHistory();
-        mDbOpenHelper.getAllDonateHistory();
+//        mDbOpenHelper.getAllPHistory();
+//        mDbOpenHelper.getAllDonateHistory();
 
 
         pointHistoryListView = (ListView)findViewById(R.id.tab1_listview);
@@ -84,14 +84,14 @@ public class MyPageActivity extends AppCompatActivity {
         pointHistoryListView.setAdapter(pointHistoryAdapter);
 
 
-//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
-//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",3,100));
-//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-//        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
-//
-//        pointHistoryAdapter.notifyDataSetChanged();
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",3,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
+
+        pointHistoryAdapter.notifyDataSetChanged();
 
 
 
@@ -100,14 +100,14 @@ public class MyPageActivity extends AppCompatActivity {
         donateHistoryAdapter = new DonateHistoryAdapter(this,R.layout.list_item_donate_history,donateHistoryInfoList);
         donateHistoryListView.setAdapter(donateHistoryAdapter);
 
-//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
-//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
-//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
-//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
-//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
-//        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
-//
-//        donateHistoryAdapter.notifyDataSetChanged();
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+
+        donateHistoryAdapter.notifyDataSetChanged();
 
 //      봉사 탭
 //        volunteerListView = (ListView)findViewById(R.id.tab3_listview);

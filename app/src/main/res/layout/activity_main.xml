@@ -96,8 +96,8 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="@color/colorAccent"
         android:orientation="horizontal">
 
@@ -155,7 +155,7 @@
                 android:gravity="center"
                 android:textSize="20dp"
                 android:textColor="@color/text_color"
-                android:text="donation"/>
+                android:text="기부"/>
 
         </LinearLayout>
 
@@ -179,7 +179,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="volunteer"
+                android:text="봉사"
                 android:textColor="@color/text_color"
                 android:textSize="20dp" />
 
@@ -203,7 +203,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="My page"
+                android:text="내 이력"
                 android:textColor="@color/text_color"
                 android:textSize="20dp" />
 

@@ -1,8 +1,12 @@
 package com.midas.donation_android_app;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
@@ -14,21 +18,45 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GraphActivity extends AppCompatActivity {
 
     private BarChart barChart;
+    private ImageButton backButton;
+    private int status;
+    private TextView titleTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
+        Intent intent = new Intent();
+        status = intent.getIntExtra("status",-1);
+
         setLayout();
     }
 
     private void setLayout(){
+        backButton = (ImageButton)findViewById(R.id.back_btn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        titleTextView = (TextView)findViewById(R.id.textview_title);
+       if(status == 1){
+           titleTextView.setText("기부현황보기");
+       }else{
+           titleTextView.setText("통계보기");
+       }
+
         barChart = (BarChart) findViewById(R.id.barchart);
 
         List<BarEntry> entries = new ArrayList<>();
