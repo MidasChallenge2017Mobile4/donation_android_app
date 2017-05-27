@@ -1,32 +1,18 @@
 package com.midas.donation_android_app;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.Toast;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.ExecutionException;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.POST;
+
+
 
 public class DonateActivity extends AppCompatActivity {
     TabHost tabHost;
@@ -109,38 +95,8 @@ public class DonateActivity extends AppCompatActivity {
         });
     }
 
-    public class Donate1 extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            String result = null;
-            DonateService service = DonateService.retrofit.create(DonateService.class);
-            Call<List<Donation>> c = service.DonateInfo(params[0]);
-            try {
-                return c.execute().body().toString();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-//        public DonateService getDonateService(){
-//
-//            DonateService service =  retrofit.create(DonateService.class);
-//            return service;
-//        }
-    }
 
-    public interface DonateService {
-        @FormUrlEncoded
-        @POST("donate1.php") // '/'를 붙이지 않음
-        //siteurl으로 찾는 예시
-        public Call<List<Donation>> DonateInfo(@Field("date") String date);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.48/") // '/'를 꼭 붙여주어야함!
-                //json과 xml을 사용하기 위함
-                .addConverterFactory(GsonConverterFactory.create())
-                //    .addConverterFactory(SimpleXmlConverterFactory.create()) //xml 사용하기 위해서
-                .build();
-    }
+
 
 }
