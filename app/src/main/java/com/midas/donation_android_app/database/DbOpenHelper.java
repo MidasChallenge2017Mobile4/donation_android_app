@@ -119,7 +119,7 @@ public class DbOpenHelper {
 
 
 
-    /** DB항목 업그레이드 - 참여하기 버튼누르거나 하트누를때 */
+    /** DB항목 업그레이드 - 참여했는지 참여하기 버튼누르거나 하트누를때 */
      public boolean DbUpdateChk(int id, Boolean isChecked){
 
      ContentValues values = new ContentValues();
@@ -133,6 +133,12 @@ public class DbOpenHelper {
 
          return false;
      }
+
+
+
+
+
+
 
 
 
@@ -208,6 +214,9 @@ public class DbOpenHelper {
 
         return (int) stmt.simpleQueryForLong();
     }
+
+
+
 
     /** 진행중인 봉사목록 */
     public ArrayList<VtListData> DbMainSelect(){
@@ -303,6 +312,7 @@ public class DbOpenHelper {
         }
         return null;
     }
+
 
 
 
