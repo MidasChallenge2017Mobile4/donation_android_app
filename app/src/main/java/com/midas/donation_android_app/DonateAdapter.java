@@ -47,11 +47,11 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             }
             if (goal != null)
             {
-                goal.setText(d.getGoal()+"원 목표");
+                goal.setText(d.getGoal()+"원");
             }
             if (total != null)
             {
-                total.setText(d.getTotal()+"원 달성");
+                total.setText((d.getTotal()/d.getGoal())*100+"%");
             }
         }
         return v;

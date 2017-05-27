@@ -19,6 +19,7 @@
             android:text="2017.05.02"/>
 
         <ImageView
+            android:id="@+id/imgview_status"
             android:layout_width="80px"
             android:layout_height="80px"
             android:background="@drawable/rice_bowl"/>
