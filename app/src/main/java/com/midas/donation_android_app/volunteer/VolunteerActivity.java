@@ -7,30 +7,43 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.midas.donation_android_app.R;
 
 public class VolunteerActivity extends AppCompatActivity {
 
     Fragment[] arrFragments;
+    ViewPager viewPager;
+    TabLayout tabLayout;
+    ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        backButton = (ImageButton) findViewById(R.id.back_btn);
 
         arrFragments = new Fragment[3];
         arrFragments[0] = new VtListFragment();
-        arrFragments[1] = new BlankFragment();
-        arrFragments[2] = new BlankFragment();
+        arrFragments[1] = new VtListFragment();
+        arrFragments[2] = new VtListFragment();
 
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager(), arrFragments);
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     class MainPagerAdapter extends FragmentPagerAdapter {

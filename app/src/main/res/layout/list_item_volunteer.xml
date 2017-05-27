@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/iv_img"
@@ -10,17 +10,17 @@
         android:background="#ffcaf8">
 
         <TextView
-            android:layout_alignParentRight="true"
             android:id="@+id/tv_title"
-            android:layout_centerInParent="true"
-            android:gravity="right"
-            android:text="마이다스 나눔가게,\n사랑의 의류나눔"
-            android:textSize="22dp"
-            android:padding="20dp"
-            android:background="#99ffffff"
-            android:textColor="@color/black_78"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:background="#99ffffff"
+            android:gravity="right"
+            android:padding="20dp"
+            android:text="마이다스 나눔가게,\n사랑의 의류나눔"
+            android:textColor="@color/black_78"
+            android:textSize="22dp" />
 
     </RelativeLayout>
 
@@ -31,6 +31,7 @@
         android:paddingRight="16dp">
 
         <CheckBox
+            android:layout_marginLeft="16dp"
             android:id="@+id/chk_like"
             android:layout_width="24dp"
             android:layout_height="24dp"
