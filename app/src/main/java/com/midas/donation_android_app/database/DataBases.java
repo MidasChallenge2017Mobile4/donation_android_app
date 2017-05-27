@@ -80,6 +80,10 @@ public final class DataBases {
                         +User_ID+" text not null,"
                         +Do_Mo+" int)";
     }
+
+    /* 마이페이지
+    * */
+
     public static final class CreateEpilTable implements BaseColumns {
         public static final String _ID = "_id";
         public static final String URL = "URL";
@@ -95,6 +99,7 @@ public final class DataBases {
                         +STATE+" int)";
     }
 
+
     public static final class CreatePHistoryTable implements BaseColumns {
         public static final String _ID = "_id";
         public static final String User_ID = "User_id";
@@ -104,14 +109,44 @@ public final class DataBases {
         public static final String _TABLENAME = "PHistoryinfo";
 
         public static final String _CREATE =
-                "create table "+_TABLENAME+"("
+                "create table IF NOT EXISTS "+_TABLENAME+"("
                         +_ID+" integer primary key autoincrement, "
-                        +User_ID+" text not null,"
+                        +User_ID+" integer,"
                         +DATE+" text not null,"
-                        +STATUS+" int,"
-                        +POINT+" int)";
+                        +STATUS+" integer,"
+                        +POINT+" integer);";
     }
 
+    public static final class CreateUserTable implements BaseColumns {
+        public static final String _ID = "_id";
+        public static final String User_ID = "User_id";
+        public static final String RICE = "rice";
+        public static final String EXERCISE = "exercise";
+        public static final String ATTENDENCE = "attendence";
+        public static final String _TABLENAME = "Userinfo";
 
+        public static final String _CREATE =
+                "create table "+_TABLENAME+"("
+                        +_ID+" integer primary key autoincrement, "
+                        +User_ID+" integer,"
+                        +RICE+" int,"
+                        +EXERCISE+" int,"
+                        +ATTENDENCE+" int);";
+    }
+
+    public static final class CreateDonateHistoryTable implements BaseColumns {
+        public static final String _ID = "_id";
+        public static final String User_ID = "User_id";
+        public static final String Do_ID = "Do_id";
+        public static final String AMOUNT = "amount";
+        public static final String _TABLENAME = "DonateHistoryinfo";
+
+        public static final String _CREATE =
+                "create table "+_TABLENAME+"("
+                        +_ID+" integer primary key autoincrement, "
+                        +User_ID+" integer,"
+                        +Do_ID+" integer,"
+                        +AMOUNT+" int);";
+    }
     
 }

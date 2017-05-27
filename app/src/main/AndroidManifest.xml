@@ -3,6 +3,7 @@
     package="com.midas.donation_android_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".application.ApplicationController"
         android:allowBackup="true"
@@ -18,13 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".DonateActivity"></activity>
-        <activity android:name=".volunteer.VolunteerActivity"></activity>
+        <activity android:name=".DonateActivity" />
+        <activity android:name=".volunteer.VolunteerActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".DonateExplainActivity" />
+        <activity android:name=".volunteer.VtDetailActivity" />
+        <activity android:name=".GraphActivity"></activity>
         <activity android:name=".DonateEpilogueActivity" />
-        <activity android:name=".volunteer.VtDetailActivity"></activity>
+
     </application>
 
 </manifest>
