@@ -1,6 +1,8 @@
 package com.midas.donation_android_app.volunteer;
 
-
+/**
+ * Created by ichaeeun on 2017. 5. 27..
+ */
 public class CardItem {
 
     private String mTextResource;

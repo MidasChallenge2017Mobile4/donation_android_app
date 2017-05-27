@@ -39,11 +39,11 @@ public class VtListFragment extends Fragment {
         matchingListDatas = new ArrayList<>();
 
         for (int i = 0; i < 20; i++) {
-            VtListData matchingListData1 = new VtListData();
-            matchingListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
-            matchingListData1.setImage(R.drawable.e1);
-            matchingListData1.setDate("2017.05.27");
-            matchingListDatas.add(matchingListData1);
+            VtListData vtListData1 = new VtListData();
+            vtListData1.setTitle("마이다스 나눔가게,\n사랑의 의류나눔");
+            vtListData1.setImage(R.drawable.e1);
+            vtListData1.setDate("2017.05.27");
+            matchingListDatas.add(vtListData1);
 
         }
 

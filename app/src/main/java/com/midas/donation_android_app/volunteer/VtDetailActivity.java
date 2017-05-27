@@ -8,7 +8,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.midas.donation_android_app.R;
+import com.midas.donation_android_app.application.ApplicationController;
 
+/**
+ * Created by ichaeeun on 2017. 5. 27..
+ */
 public class VtDetailActivity extends AppCompatActivity {
 
     private ImageButton backButton;
@@ -29,6 +33,8 @@ public class VtDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        ApplicationController.
 
         mCardAdapter = new CardPagerAdapter();
         mCardAdapter.addCardItem(new CardItem("봉사제목1", "봉사설명1"));

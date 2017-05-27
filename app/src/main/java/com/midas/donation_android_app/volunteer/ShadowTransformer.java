@@ -4,7 +4,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
-
+/**
+ * Created by ichaeeun on 2017. 5. 27..
+ */
 public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPager.PageTransformer {
 
     private ViewPager mViewPager;

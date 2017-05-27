@@ -12,6 +12,9 @@ import com.midas.donation_android_app.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by ichaeeun on 2017. 5. 27..
+ */
 public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
 
     private List<CardView> mViews;

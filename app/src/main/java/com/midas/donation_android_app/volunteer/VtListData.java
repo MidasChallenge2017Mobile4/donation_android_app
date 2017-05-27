@@ -6,27 +6,29 @@ package com.midas.donation_android_app.volunteer;
 
 
 public class VtListData {
-    private int id;
-    private String title;
-    private String contents;
-    private int image;
-    private String date;   // 봉사 날짜
-    private String owner;
-    private int view;
+    public int id;
+    public String title;
+    public String content;
+    public int image;
+    public String date;   // 봉사 날짜
+    public String status;
+    public int view;
+    public boolean isChecked;
 
 
     public VtListData() {
 
     }
 
-    public VtListData(int id, String title, String contents, int image, String date, String owner, int view) {
+    public VtListData(int id, String title, String content, int image, String date, String status, int view, boolean isChecked) {
         this.id = id;
         this.title = title;
-        this.contents = contents;
+        this.content = content;
         this.image = image;
         this.date = date;
-        this.owner = owner;
+        this.status = status;
         this.view = view;
+        this.isChecked = isChecked;
     }
 
     public int getId() {
@@ -45,12 +47,12 @@ public class VtListData {
         this.title = title;
     }
 
-    public String getContents() {
-        return contents;
+    public String getContent() {
+        return content;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getImage() {
@@ -69,12 +71,12 @@ public class VtListData {
         this.date = date;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getStatus() {
+        return status;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getView() {
@@ -83,5 +85,13 @@ public class VtListData {
 
     public void setView(int view) {
         this.view = view;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }

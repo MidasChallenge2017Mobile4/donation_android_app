@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.midas.donation_android_app.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created by ichaeeun on 2017. 5. 27..
  */
 public class BlankFragment extends Fragment {
 
