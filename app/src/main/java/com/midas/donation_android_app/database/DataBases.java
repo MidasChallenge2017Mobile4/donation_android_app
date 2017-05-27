@@ -62,5 +62,24 @@ public final class DataBases {
                         +User_ID+" text not null,"
                         +Do_Mo+" int)";
     }
+
+    public static final class CreatePHistoryTable implements BaseColumns {
+        public static final String _ID = "_id";
+        public static final String User_ID = "User_id";
+        public static final String DATE = "date";
+        public static final String STATUS = "status";
+        public static final String POINT = "point";
+        public static final String _TABLENAME = "PHistoryinfo";
+
+        public static final String _CREATE =
+                "create table "+_TABLENAME+"("
+                        +_ID+" integer primary key autoincrement, "
+                        +User_ID+" text not null,"
+                        +DATE+" text not null,"
+                        +STATUS+" int,"
+                        +POINT+" int)";
+    }
+
+
     
 }
