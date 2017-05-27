@@ -62,6 +62,18 @@ public final class DataBases {
                         +User_ID+" text not null,"
                         +Do_Mo+" int)";
     }
+    public static final class CreateEpilTable implements BaseColumns {
+        public static final String _ID = "_id";
+        public static final String URL = "URL";
+        public static final String STATE = "state";
+        public static final String _TABLENAME = "Epilinfo";
+
+        public static final String _CREATE =
+                "create table "+_TABLENAME+"("
+                        +_ID+" integer primary key autoincrement, "
+                        +URL+" text not null,"
+                        +STATE+" text)";
+    }
 
     public static final class CreatePHistoryTable implements BaseColumns {
         public static final String _ID = "_id";

@@ -20,7 +20,7 @@
             />
 
         <TextView
-            android:text="봉사"
+            android:text="기부"
             android:layout_centerInParent="true"
             android:textSize="18sp"
             android:layout_centerVertical="true"

@@ -56,7 +56,7 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             }
             if(state !=null){
                 if(d.getState()==2) {
-                    state.setText("진행 마감");
+                    state.setText("모금실패");
                 }
             }
         }

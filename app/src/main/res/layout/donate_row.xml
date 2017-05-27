@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_margin="10dp" android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="300dp" android:id="@+id/donate_row">
+    android:layout_height="300dp" android:id="@+id/donate_row" android:background="@color/white">
 
     <ImageView
         android:background="#11111166"
@@ -14,20 +14,21 @@
         android:layout_height="80dp">
 
         <LinearLayout
-            android:layout_width="250dp"
+            android:layout_width="280dp"
             android:layout_height="40dp"
             android:layout_gravity="right"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/state"
-                android:layout_width="110dp"
+                android:layout_width="140dp"
                 android:layout_height="40dp"
                 android:textColor="#ff3636"
                 android:textSize="30dp"
                 android:paddingTop="5dp"
                 android:layout_marginRight="30dp"
                 android:textStyle="bold"
+                android:typeface="monospace"
                 android:text=" "/>
 
             <TextView

@@ -20,7 +20,7 @@
             />
 
         <TextView
-            android:text="봉사"
+            android:text="기부"
             android:layout_centerInParent="true"
             android:textSize="18sp"
             android:layout_centerVertical="true"
@@ -49,7 +49,8 @@
     <TabHost
         android:id="@+id/donateTab"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:background="@color/white">
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="fill_parent"
@@ -62,18 +63,21 @@
             android:paddingTop="55dp">
 
             <ListView
+                android:background="#CFCFCF"
                 android:id="@+id/tab1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"></ListView>
 
             <ListView
+                android:background="#CFCFCF"
                 android:id="@+id/tab2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"></ListView>
 
             <ListView
+                android:background="#CFCFCF"
                 android:id="@+id/tab3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
