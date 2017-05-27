@@ -50,11 +50,11 @@ public class VolunteerActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
-                    return "봉사 신청";
+                    return "봉사 진행";
                 case 1:
-                    return "참여 예정";
+                    return "봉사 종료";
                 case 2:
-                    return "후기";
+                    return "나의 봉사";
 
                 default:
                     return "";
