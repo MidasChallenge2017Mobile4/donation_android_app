@@ -120,26 +120,24 @@ public class DbOpenHelper {
 
 
     /** DB항목 업그레이드 - 참여했는지 참여하기 버튼누르거나 하트누를때 */
-     public boolean DbUpdateChk(int id, Boolean isChecked){
+//     public boolean DbUpdateChk(int id, Boolean isChecked){
+//
+//     ContentValues values = new ContentValues();
+//     values.put("isChecked", String.valueOf(isChecked));
+//
+//
+//     int result = mDB.update("memoinfo", values, "_id=?", new String[]{String.valueOf(id)});
+//        if(result > 0) {
+//            return true;
+//        }
+//
+//         return false;
+//     }
 
-     ContentValues values = new ContentValues();
-     values.put("isChecked", String.valueOf(isChecked));
-
-
-     int result = mDB.update("memoinfo", values, "_id=?", new String[]{String.valueOf(id)});
-        if(result > 0) {
-            return true;
-        }
-
-         return false;
-     }
-
-
-
-
-
-
-
+    public void DbUpdateChk(int id, Boolean isChecked){
+        String sql = "update " + "memoinfo" + " set isChecked = '" + String.valueOf(isChecked) +"' where _id = "+id +";";
+        mDB.execSQL(sql);
+    }
 
 
     /**
@@ -322,9 +320,9 @@ public class DbOpenHelper {
     public ArrayList<VtListData> DbVtFinishSelect(){
         SQLiteDatabase getDb;
         getDb = mDBHelper.getReadableDatabase();
-        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+        Cursor c = getDb.rawQuery( "select * from memoinfo where _id = 3;" , null);
 
-        itemDatas = new ArrayList<VtListData>();
+        itemDatas = new ArrayList<>();
 //
 //        Log.i("myTag" , "갯수 : " + String.valueOf(c.getCount()));
 
@@ -371,7 +369,7 @@ public class DbOpenHelper {
     public ArrayList<VtListData> DbVtListSelect(){
         SQLiteDatabase getDb;
         getDb = mDBHelper.getReadableDatabase();
-        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+        Cursor c = getDb.rawQuery( "select * from memoinfo" , null);
 
         itemDatas = new ArrayList<VtListData>();
 //
@@ -419,7 +417,7 @@ public class DbOpenHelper {
     public ArrayList<VtListData> DbMyVtSelect(){
         SQLiteDatabase getDb;
         getDb = mDBHelper.getReadableDatabase();
-        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+        Cursor c = getDb.rawQuery( "select * from memoinfo where _id = 1" , null);
 
         itemDatas = new ArrayList<VtListData>();
 //

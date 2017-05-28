@@ -57,10 +57,11 @@ public class VtDetailActivity extends AppCompatActivity {
 
 
         if(vtItem.isChecked == true) {
-            applyButton.setText("참여확정");
+            applyButton.setText("취소하기");
         } else {
             applyButton.setText("참여하기");
         }
+
 
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,10 +82,18 @@ public class VtDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                    Toast.makeText(getApplicationContext(),"참여 신청이 되었습니다.",Toast.LENGTH_LONG).show();
-                    applyButton.setText("참여확정");
+                if(vtItem.isChecked == false) {
+                    Toast.makeText(getApplicationContext(),"참여 신청이 되었습니다.",Toast.LENGTH_SHORT).show();
+                    applyButton.setText("취소하기");
+                    vtItem.isChecked = true;
                     dbOpenHelper.DbUpdateChk(vtItem.id, true);
+                } else {
+
+                    Toast.makeText(getApplicationContext(),"참여 신청이 취소되었습니다.",Toast.LENGTH_SHORT).show();
+                    applyButton.setText("참여하기");
+                    vtItem.isChecked = false;
+                    dbOpenHelper.DbUpdateChk(vtItem.id, false);
+                }
 
 
             }

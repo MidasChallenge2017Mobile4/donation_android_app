@@ -30,8 +30,8 @@ public class VolunteerActivity extends AppCompatActivity {
 
         arrFragments = new Fragment[3];
         arrFragments[0] = new VtListFragment();
-        arrFragments[1] = new VtListFragment();
-        arrFragments[2] = new VtListFragment();
+        arrFragments[1] = new VtFinishFragment();
+        arrFragments[2] = new VtMyListFragment();
 
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager(), arrFragments);
 
