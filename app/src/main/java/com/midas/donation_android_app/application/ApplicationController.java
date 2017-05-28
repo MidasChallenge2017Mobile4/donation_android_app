@@ -1,6 +1,7 @@
 package com.midas.donation_android_app.application;
 
 import android.app.Application;
+import android.util.Log;
 
 
 import com.midas.donation_android_app.database.DbOpenHelper;
@@ -19,6 +20,7 @@ public class ApplicationController extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d("TESTTEST","ONCREATE");
         ApplicationController.instance = this;
         this.buildDB();
 
