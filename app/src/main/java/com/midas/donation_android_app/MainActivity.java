@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         set.setColors(colors);
 
         PieData data = new PieData(set);
-        data.setValueTextSize(12f);
+        data.setValueTextSize(17f);
         data.setValueTextColor(R.color.text2);
 
         Description description = new Description();

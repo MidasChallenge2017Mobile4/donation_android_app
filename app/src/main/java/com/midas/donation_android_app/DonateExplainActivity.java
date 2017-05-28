@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 
 public class DonateExplainActivity extends AppCompatActivity {
     Button donate_btn;
+    ImageButton back_btn;
     TextView tv, title, content;
     ImageView iv;
     @Override
@@ -53,6 +55,14 @@ public class DonateExplainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"멋진 기부를 하셨네요!", Toast.LENGTH_SHORT).show();
                     tv.setText(" ");
                 }
+            }
+        });
+
+        back_btn = (ImageButton)findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
