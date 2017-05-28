@@ -43,11 +43,6 @@ public class DbOpenHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DataBases.CreateVtTable._CREATE);
-            db.execSQL(DataBases.CreateDoTable._CREATE);
-            db.execSQL(DataBases.CreatePHistoryTable._CREATE);
-            db.execSQL(DataBases.CreateUserTable._CREATE);
-            db.execSQL(DataBases.CreateDonateHistoryTable._CREATE);
-
             VtListData vtListData1 = new VtListData(0, "어르신 정서/주거환경 돌보미", "d","\"어르신 정서/주거환경 돌보미", "성남 지역의 노인 요양원을 방문"
             , "치매노인분들의 말벗 해드리기","함께 산책하기 등의 정서치료와 실내외 청소","안정적이고 쾌적한 주거 환경을 조성"
             , R.drawable.nursinghome_ex1, R.drawable.nursinghome_ex2, R.drawable.nursinghome_ex3, R.drawable.nursinghome_ex4

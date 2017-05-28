@@ -27,7 +27,6 @@ public class DonateExplainActivity extends AppCompatActivity {
     TextView tv, title, content;
     ImageView iv;
     DbOpenHelper mDbOpenHelper;
-    SQLite
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +53,8 @@ public class DonateExplainActivity extends AppCompatActivity {
                 if(money%1000!=0) {
                     Toast.makeText(getApplicationContext(),"1000원 단위로 가능합니다.", Toast.LENGTH_SHORT).show();
                     tv.setText(" ");
-                }else{
+                }else if(money%1000==0){
                     Toast.makeText(getApplicationContext(),"멋진 기부를 하셨네요!", Toast.LENGTH_SHORT).show();
-                    SQLiteDatabase mDB;
-                    mDbOpenHelper.MyDoInsert(mDB, 1, 2, 2000);
                     tv.setText(" ");
                 }
             }
