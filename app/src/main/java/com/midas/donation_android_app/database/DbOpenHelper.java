@@ -43,11 +43,6 @@ public class DbOpenHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DataBases.CreateVtTable._CREATE);
-            db.execSQL(DataBases.CreateDoTable._CREATE);
-            db.execSQL(DataBases.CreatePHistoryTable._CREATE);
-            db.execSQL(DataBases.CreateUserTable._CREATE);
-            db.execSQL(DataBases.CreateDonateHistoryTable._CREATE);
-
             VtListData vtListData1 = new VtListData(0, "어르신 정서/주거환경 돌보미", "d","\"어르신 정서/주거환경 돌보미", "성남 지역의 노인 요양원을 방문"
             , "치매노인분들의 말벗 해드리기","함께 산책하기 등의 정서치료와 실내외 청소","안정적이고 쾌적한 주거 환경을 조성"
             , R.drawable.nursinghome_ex1, R.drawable.nursinghome_ex2, R.drawable.nursinghome_ex3, R.drawable.nursinghome_ex4
@@ -76,13 +71,22 @@ public class DbOpenHelper {
             DbInsert(db, vtListData3);
             DbInsert(db, vtListData4);
 
-
-
-
+            db.execSQL(DataBases.CreateMYDoTable._CREATE);
+            MyDoInsert(db, 1, 1, 1000);
+            MyDoInsert(db, 1, 2, 2000);
 
 
         }
+        public void MyDoInsert(SQLiteDatabase db, int did, int uid, int money){
 
+
+            ContentValues values = new ContentValues();
+            values.put("Do_id",did);
+            values.put("User_id",uid);
+            values.put("money",money);
+            db.insert("MyDoinfo",null,values);
+
+        }
         // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -129,26 +133,24 @@ public class DbOpenHelper {
 
 
     /** DB항목 업그레이드 - 참여했는지 참여하기 버튼누르거나 하트누를때 */
-     public boolean DbUpdateChk(int id, Boolean isChecked){
+//     public boolean DbUpdateChk(int id, Boolean isChecked){
+//
+//     ContentValues values = new ContentValues();
+//     values.put("isChecked", String.valueOf(isChecked));
+//
+//
+//     int result = mDB.update("memoinfo", values, "_id=?", new String[]{String.valueOf(id)});
+//        if(result > 0) {
+//            return true;
+//        }
+//
+//         return false;
+//     }
 
-     ContentValues values = new ContentValues();
-     values.put("isChecked", String.valueOf(isChecked));
-
-
-     int result = mDB.update("memoinfo", values, "_id=?", new String[]{String.valueOf(id)});
-        if(result > 0) {
-            return true;
-        }
-
-         return false;
-     }
-
-
-
-
-
-
-
+    public void DbUpdateChk(int id, Boolean isChecked){
+        String sql = "update " + "memoinfo" + " set isChecked = '" + String.valueOf(isChecked) +"' where _id = "+id +";";
+        mDB.execSQL(sql);
+    }
 
 
     /**
@@ -331,9 +333,9 @@ public class DbOpenHelper {
     public ArrayList<VtListData> DbVtFinishSelect(){
         SQLiteDatabase getDb;
         getDb = mDBHelper.getReadableDatabase();
-        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+        Cursor c = getDb.rawQuery( "select * from memoinfo where _id = 3;" , null);
 
-        itemDatas = new ArrayList<VtListData>();
+        itemDatas = new ArrayList<>();
 //
 //        Log.i("myTag" , "갯수 : " + String.valueOf(c.getCount()));
 
@@ -380,7 +382,7 @@ public class DbOpenHelper {
     public ArrayList<VtListData> DbVtListSelect(){
         SQLiteDatabase getDb;
         getDb = mDBHelper.getReadableDatabase();
-        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+        Cursor c = getDb.rawQuery( "select * from memoinfo" , null);
 
         itemDatas = new ArrayList<VtListData>();
 //
@@ -428,7 +430,7 @@ public class DbOpenHelper {
     public ArrayList<VtListData> DbMyVtSelect(){
         SQLiteDatabase getDb;
         getDb = mDBHelper.getReadableDatabase();
-        Cursor c = getDb.rawQuery( "select * from memoinfo where " , null);
+        Cursor c = getDb.rawQuery( "select * from memoinfo where _id = 1" , null);
 
         itemDatas = new ArrayList<VtListData>();
 //
