@@ -35,7 +35,7 @@ public class GraphActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         status = intent.getIntExtra("status",-1);
 
         setLayout();

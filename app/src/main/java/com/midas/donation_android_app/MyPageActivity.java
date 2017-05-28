@@ -83,29 +83,25 @@ public class MyPageActivity extends AppCompatActivity {
         pointHistoryAdapter = new PointHistoryAdapter(this,R.layout.list_item_getpoint,pointHistoryInfoList);
         pointHistoryListView.setAdapter(pointHistoryAdapter);
 
-
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",3,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",1,100));
-        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,100));
-
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.05",2,200));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.10",1,100));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.18",3,300));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.04.27",3,300));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.05.07",2,200));
+        pointHistoryInfoList.add(0, new PointHistoryInfo("2017.05.05",1,100));
         pointHistoryAdapter.notifyDataSetChanged();
-
-
-
+//
 
         donateHistoryListView = (ListView)findViewById(R.id.tab2_listview);
         donateHistoryAdapter = new DonateHistoryAdapter(this,R.layout.list_item_donate_history,donateHistoryInfoList);
         donateHistoryListView.setAdapter(donateHistoryAdapter);
 
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,1));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,2));
-        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄모금행사 기부",300,3));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("나눔쌀화환 기부",1000,1));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("김장나눔행사 기부",2000,2));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("의류나눔행사 기부",1000,2));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("사랑의도시락 나눔 기부",1000,1));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("연탄나눔행사 기부",3000,3));
+        donateHistoryInfoList.add(0, new DonateHistoryInfo("주거환경개선행사 기부",1000,3));
 
         donateHistoryAdapter.notifyDataSetChanged();
 
