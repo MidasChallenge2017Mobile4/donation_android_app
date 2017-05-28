@@ -46,7 +46,7 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
             TextView goal = (TextView) v.findViewById(R.id.goal);
             TextView total = (TextView) v.findViewById(R.id.total);
             TextView state = (TextView) v.findViewById(R.id.state);
-            ImageView iv = (ImageView) v.findViewById(R.id.row_iv);
+          //  ImageView iv = (ImageView) v.findViewById(R.id.row_iv);
             if (title != null)
             {
                 title.setText(d.getTitle());
@@ -72,13 +72,13 @@ public class DonateAdapter extends ArrayAdapter<Donation> {
                     state.setText("모금실패");
                 }
             }
-            if(iv !=null){
-                if(d.image.equals("don_1")) {
-                    iv.setImageResource(R.mipmap.don_1);
-                }else{
-                    iv.setImageResource(R.mipmap.don_2);
-                }
-            }
+//            if(iv !=null){
+//                if(d.image.equals("don_1")) {
+//                    iv.setImageResource(R.mipmap.don_1);
+//                }else{
+//                    iv.setImageResource(R.mipmap.don_2);
+//                }
+//            }
         }/*else if(d != null &&d.getState()==3){
             ImageView iv = (ImageView) v.findViewById(R.id.row_iv);
             URL url = null;

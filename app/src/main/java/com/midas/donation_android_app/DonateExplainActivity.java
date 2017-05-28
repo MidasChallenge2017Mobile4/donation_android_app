@@ -25,7 +25,7 @@ public class DonateExplainActivity extends AppCompatActivity {
         init();
     }
     void init(){
-        tv = (TextView) findViewById(R.id.donate_money);
+      //  tv = (TextView) findViewById(R.id.donate_money);
         donate_btn = (Button) findViewById(R.id.donate_btn);
         donate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
